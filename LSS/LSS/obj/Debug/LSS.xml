@@ -51,15 +51,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:LSS.Login._ddlDomains">
-<summary>
-ddlDomains control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
 <member name="F:LSS.Login._txtPassword">
 <summary>
 txtPassword control.

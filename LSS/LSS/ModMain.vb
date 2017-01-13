@@ -127,7 +127,7 @@ Module ModMain
         End If
     End Function
 
-    Public Function validateUser()
+    Public Function validateUser(ByVal USERNAME As String, ByVal PASSWORD As String)
         Dim User As String = ""
         Dim strSql As String = ""
         Dim tblResults As DataTable = Nothing
@@ -135,20 +135,23 @@ Module ModMain
         ''''''''''VERIFY USER''''''''''''
         If IsNothing(System.Web.HttpContext.Current.Session("User_Name")) Then
             User = HttpContext.Current.Request.LogonUserIdentity.Name.ToString.Replace("ITGBRANDS\", "").Replace("D700\", "")
-            strSql = "Select SAM_ACCOUNT_NAME AS 'USER_ID', NAME, IS_ADMIN, EMAIL from vw_sys_users where SAM_ACCOUNT_NAME = '" & User & "'"
+            strSql = "Select * from EMPLOYEE.SYS_USERS where login_id = '" & USERNAME & "' and password = '" & PASSWORD & "'"
             tblResults = g_IO_Execute_SQL(strSql, False)
 
             If tblResults.Rows.Count > 0 Then
-                System.Web.HttpContext.Current.Session("USER_NAME") = tblResults.Rows(0)("NAME").ToString()
-                System.Web.HttpContext.Current.Session("USER_ID") = tblResults.Rows(0)("USER_ID").ToString()
-                System.Web.HttpContext.Current.Session("USER_EMAIL") = tblResults.Rows(0)("EMAIL").ToString()
+                System.Web.HttpContext.Current.Session("USER_NAME") = tblResults.Rows(0)("FIRST_NAME").ToString() & " " & tblResults.Rows(0)("LAST_NAME").ToString()
+                System.Web.HttpContext.Current.Session("USER_ID") = tblResults.Rows(0)("SYS_USERS_ID").ToString()
+                System.Web.HttpContext.Current.Session("LOGIN_ID") = tblResults.Rows(0)("LOGIN_ID").ToString()
 
                 strSql = "Insert into dbo.AUDIT (AUDIT_TYPE, AUDIT_MESSAGE, AUDIT_USER, AUDIT_DETAILS) VALUES (" &
-                    "'USER AUTHENTICATED','USER GROUP LISTING','" & System.Web.HttpContext.Current.Session("USER_ID").ToString & "','" & System.Web.HttpContext.Current.Session("MEMBER_OF").ToString & "')"
+                    "'USER AUTHENTICATION','AUTHENTICATION SUCCESS','" & USERNAME & "','LOGIN FAILURE. TIME: " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second & "')"
                 g_IO_Execute_SQL(strSql, False)
 
                 Return True
             Else
+                strSql = "Insert into dbo.AUDIT (AUDIT_TYPE, AUDIT_MESSAGE, AUDIT_USER, AUDIT_DETAILS) VALUES (" &
+                    "'USER AUTHENTICATION','AUTHENTICATION FAILED','" & USERNAME & "','LOGIN FAILURE. TIME: " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second & "')"
+                g_IO_Execute_SQL(strSql, False)
                 Return False
             End If
         Else
@@ -158,23 +161,7 @@ Module ModMain
     End Function
 
     Public Function validateAdmin()
-        If IsNothing(System.Web.HttpContext.Current.Session("IS_ADMIN")) Then
-            validateUser()
-        End If
-
         If System.Web.HttpContext.Current.Session("IS_ADMIN") = 1 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
-    Public Function validateCanEdit()
-        If IsNothing(System.Web.HttpContext.Current.Session("CAN_EDIT")) Then
-            validateUser()
-        End If
-
-        If System.Web.HttpContext.Current.Session("CAN_EDIT") = 1 Or System.Web.HttpContext.Current.Session("IS_ADMIN") = 1 Then
             Return True
         Else
             Return False

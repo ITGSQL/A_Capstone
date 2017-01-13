@@ -535,6 +535,7 @@
     <Content Include="images\download-csv.png" />
     <Content Include="images\Edit.png" />
     <Content Include="images\icon_user_sm.jpg" />
+    <Content Include="images\Larrys.jpg" />
     <Content Include="images\LoadingBar.gif" />
     <Content Include="images\notes-icon.png" />
     <Content Include="images\report-icon.png" />

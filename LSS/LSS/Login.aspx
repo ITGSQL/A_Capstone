@@ -174,15 +174,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>DOMAIN</td>
-                            <td>
-                                <asp:DropDownList ID="ddlDomains" runat="server">
-                                    <asp:ListItem Value="ITGBRANDS">ITGBRANDS</asp:ListItem>
-                                    <asp:ListItem Value="D700">D700</asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>PASSWORD</td>
                             <td>
                                 <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox>
