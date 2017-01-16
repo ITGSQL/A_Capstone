@@ -546,6 +546,7 @@
     <Content Include="images\search_icon.png" />
     <Content Include="images\security-icon.png" />
     <Content Include="images\trash.png" />
+    <Content Include="InvRawMaterials.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
@@ -557,6 +558,13 @@
     </Compile>
     <Compile Include="Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="InvRawMaterials.aspx.designer.vb">
+      <DependentUpon>InvRawMaterials.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InvRawMaterials.aspx.vb">
+      <DependentUpon>InvRawMaterials.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.vb">
