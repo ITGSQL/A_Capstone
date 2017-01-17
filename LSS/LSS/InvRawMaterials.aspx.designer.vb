@@ -230,13 +230,13 @@ Partial Public Class InvRawMaterials
     Protected WithEvents pnlNewCategory As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''txtCategory control.
+    '''txtNewCategory control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCategory As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtNewCategory As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''btnAddNewCategory control.

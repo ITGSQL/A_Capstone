@@ -161,7 +161,15 @@ Module ModMain
     End Function
 
     Public Function validateAdmin()
-        If System.Web.HttpContext.Current.Session("IS_ADMIN") = 1 Then
+        If System.Web.HttpContext.Current.Session("USER_NAME").ToString.ToUpper = "ADMIN" Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function validateAOR(ByVal Area As String)
+        If System.Web.HttpContext.Current.Session("USER_NAME").ToString.ToUpper = "ADMIN" Then
             Return True
         Else
             Return False

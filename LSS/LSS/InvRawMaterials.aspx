@@ -12,10 +12,17 @@
 
     <asp:Panel ID="pnlRawMaterialListing" runat="server">
         <table class="table table-responsive table-bordered">
-            <tr><td>Name</td><td>Category</td><td>Brand</td><td>Description</td><td>On-Hand</td><td>&nbsp;</td></tr>
+            <tr><td>Name</td><td>Category</td><td>Brand</td><td>Description</td><td>On-Hand</td><td><a href="InvRawMaterials.aspx?&action=NewRawMaterial"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></td></tr>
             <asp:Repeater ID="rptrRawMaterialListing" runat="server">
                 <ItemTemplate>
-                    <tr><td><%#DataBinder.Eval(Container.DataItem, "Name") %></td><td><%#DataBinder.Eval(Container.DataItem, "Category_Name") %></td><td><%#DataBinder.Eval(Container.DataItem, "Brand") %></td><td><%#DataBinder.Eval(Container.DataItem, "Description") %></td><td><%#DataBinder.Eval(Container.DataItem, "onhand_qty") %></td><td>&nbsp;</td></tr>
+                    <tr><td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Category_Name") %></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Brand") %></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Description") %></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "onhand_qty") %></td>
+                        <td><a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Update"><img src="images/edit.png" /></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Delete"><img src="images/trash.png" /></a>
+                        </td></tr>
                 </ItemTemplate>
             </asp:Repeater>
 
@@ -90,7 +97,7 @@
             <tr><td colspan="2"><span style="font-size: 1.1em; font-weight: bold;">New Category</span></td></tr>
             <tr>
                 <td>Category Name: </td>
-                <td><asp:TextBox ID="txtCategory" runat="server"></asp:TextBox></td>
+                <td><asp:TextBox ID="txtNewCategory" runat="server"></asp:TextBox></td>
             </tr>
             <tr><td colspan="2"><asp:Button ID="btnAddNewCategory" runat="server" Text="Save" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelNewCategory" runat="server" Text="Cancel" /></td></tr>
         </table>
