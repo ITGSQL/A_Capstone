@@ -6,6 +6,357 @@ LSS
 </name>
 </assembly>
 <members>
+<member name="F:LSS.InvRawMaterials._pnlRawMaterialListing">
+<summary>
+pnlRawMaterialListing control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._rptrRawMaterialListing">
+<summary>
+rptrRawMaterialListing control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlRawMaterialUpdateDetails">
+<summary>
+pnlRawMaterialUpdateDetails control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtName">
+<summary>
+txtName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlCategory">
+<summary>
+ddlCategory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._imgNewCategory">
+<summary>
+imgNewCategory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlBrand">
+<summary>
+ddlBrand control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._imgNewBrand">
+<summary>
+imgNewBrand control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtDescription">
+<summary>
+txtDescription control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlUOM">
+<summary>
+ddlUOM control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._imgNewUOM">
+<summary>
+imgNewUOM control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtOnHandQty">
+<summary>
+txtOnHandQty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtMinOnHandQty">
+<summary>
+txtMinOnHandQty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtReorderQty">
+<summary>
+txtReorderQty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnSaveNewRawMaterial">
+<summary>
+btnSaveNewRawMaterial control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelNewRawMaterial">
+<summary>
+btnCancelNewRawMaterial control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlRawMaterialProperties">
+<summary>
+pnlRawMaterialProperties control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._litRawMaterialProperties">
+<summary>
+litRawMaterialProperties control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlAddPropertyToRawMaterial">
+<summary>
+pnlAddPropertyToRawMaterial control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd">
+<summary>
+ddlPropertiesAdd control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails">
+<summary>
+txtAddPropertyDetails control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnSaveAddProperty">
+<summary>
+btnSaveAddProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelAddProperty">
+<summary>
+btnCancelAddProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlNewCategory">
+<summary>
+pnlNewCategory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtCategory">
+<summary>
+txtCategory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnAddNewCategory">
+<summary>
+btnAddNewCategory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelNewCategory">
+<summary>
+btnCancelNewCategory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlNewBrand">
+<summary>
+pnlNewBrand control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtNewBrand">
+<summary>
+txtNewBrand control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnSaveNewBrand">
+<summary>
+btnSaveNewBrand control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelNewBrand">
+<summary>
+btnCancelNewBrand control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlNewUOM">
+<summary>
+pnlNewUOM control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtNewUOM">
+<summary>
+txtNewUOM control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnSaveNewUOM">
+<summary>
+btnSaveNewUOM control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelNewUOM">
+<summary>
+btnCancelNewUOM control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlNewProperty">
+<summary>
+pnlNewProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtNewProperty">
+<summary>
+txtNewProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnSaveNewProperty">
+<summary>
+btnSaveNewProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelNewProperty">
+<summary>
+btnCancelNewProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.Login._litHdrImage">
 <summary>
 litHdrImage control.

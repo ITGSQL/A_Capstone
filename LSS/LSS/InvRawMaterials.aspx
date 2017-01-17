@@ -12,10 +12,10 @@
 
     <asp:Panel ID="pnlRawMaterialListing" runat="server">
         <table class="table table-responsive table-bordered">
-            <tr><td>Name</td><td>Category</td><td>Brand</td><td>Description</td><td>On-Hand</td></tr>
+            <tr><td>Name</td><td>Category</td><td>Brand</td><td>Description</td><td>On-Hand</td><td>&nbsp;</td></tr>
             <asp:Repeater ID="rptrRawMaterialListing" runat="server">
                 <ItemTemplate>
-
+                    <tr><td><%#DataBinder.Eval(Container.DataItem, "Name") %></td><td><%#DataBinder.Eval(Container.DataItem, "Category_Name") %></td><td><%#DataBinder.Eval(Container.DataItem, "Brand") %></td><td><%#DataBinder.Eval(Container.DataItem, "Description") %></td><td><%#DataBinder.Eval(Container.DataItem, "onhand_qty") %></td><td>&nbsp;</td></tr>
                 </ItemTemplate>
             </asp:Repeater>
 
