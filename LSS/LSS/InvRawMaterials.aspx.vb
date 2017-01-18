@@ -459,7 +459,7 @@
                       ,[REORDER_QTY] = " & txtReorderQty.Text.Replace("'", "''") & "
                       WHERE RAW_MATERIAL_ID = " & Request.QueryString("id")
             g_IO_Execute_SQL(strSQL, False)
-            Response.Redirect("InvRawMaterials.aspx")
+            Response.Redirect("InvRawMaterials.aspx?action=update&id=" & Request.QueryString("id"))
 
         ElseIf btnSaveNewRawMaterial.Text.ToUpper = "EDIT" Then
             enableForm()

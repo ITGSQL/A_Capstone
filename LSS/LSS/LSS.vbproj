@@ -549,6 +549,7 @@
     <Content Include="images\trash.png" />
     <Content Include="InvRawMaterials.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="rpt_RawMaterialInventory.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
@@ -596,6 +597,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Report.Master.designer.vb">
+      <DependentUpon>Report.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Report.Master.vb">
+      <DependentUpon>Report.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rpt_RawMaterialInventory.aspx.designer.vb">
+      <DependentUpon>rpt_RawMaterialInventory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_RawMaterialInventory.aspx.vb">
+      <DependentUpon>rpt_RawMaterialInventory.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
@@ -632,6 +647,7 @@
     </None>
     <Content Include="packages.config" />
     <Content Include="Site.Master" />
+    <Content Include="Report.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -694,6 +694,78 @@ To modify move field declaration from designer file to code-behind file.
  Returns the Asp log object.
  </summary>
 </member>
+<member name="F:LSS.Report._HeadContent">
+<summary>
+HeadContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Report._litHdrImage">
+<summary>
+litHdrImage control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Report._lblTime">
+<summary>
+lblTime control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Report._litMenu">
+<summary>
+litMenu control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Report._BodyContent">
+<summary>
+BodyContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Report._litFooter">
+<summary>
+litFooter control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Report._btnBackup">
+<summary>
+btnBackup control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.rpt_RawMaterialInventory._litReport">
+<summary>
+litReport control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.Site._HeadContent">
 <summary>
 HeadContent control.
