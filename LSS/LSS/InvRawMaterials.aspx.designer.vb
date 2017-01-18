@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class InvRawMaterials
     
     '''<summary>
+    '''litMessage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litMessage As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
     '''pnlRawMaterialListing control.
     '''</summary>
     '''<remarks>
@@ -167,13 +176,229 @@ Partial Public Class InvRawMaterials
     Protected WithEvents pnlRawMaterialProperties As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''litRawMaterialProperties control.
+    '''litNewPropertyImage control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents litRawMaterialProperties As Global.System.Web.UI.WebControls.Literal
+    Protected WithEvents litNewPropertyImage As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''rptrProperties control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rptrProperties As Global.System.Web.UI.WebControls.Repeater
+    
+    '''<summary>
+    '''pnlAddMultiplePropertyToRawMaterial control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlAddMultiplePropertyToRawMaterial As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''ddlPropertiesAdd1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd1 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd2 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails2 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd3 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails3 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd4 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails4 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd5 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails5 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd6 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails6 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd7 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd7 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails7 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails7 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd8 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails8 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd9 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails9 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlPropertiesAdd10 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlPropertiesAdd10 As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtAddPropertyDetails10 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddPropertyDetails10 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnSaveAddMultipleProperty control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveAddMultipleProperty As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnCancelAddMultipleProperty control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCancelAddMultipleProperty As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''pnlAddPropertyToRawMaterial control.

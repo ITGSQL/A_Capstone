@@ -6,6 +6,15 @@ LSS
 </name>
 </assembly>
 <members>
+<member name="F:LSS.InvRawMaterials._litMessage">
+<summary>
+litMessage control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.InvRawMaterials._pnlRawMaterialListing">
 <summary>
 pnlRawMaterialListing control.
@@ -159,9 +168,225 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:LSS.InvRawMaterials._litRawMaterialProperties">
+<member name="F:LSS.InvRawMaterials._litNewPropertyImage">
 <summary>
-litRawMaterialProperties control.
+litNewPropertyImage control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._rptrProperties">
+<summary>
+rptrProperties control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._pnlAddMultiplePropertyToRawMaterial">
+<summary>
+pnlAddMultiplePropertyToRawMaterial control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd1">
+<summary>
+ddlPropertiesAdd1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails1">
+<summary>
+txtAddPropertyDetails1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd2">
+<summary>
+ddlPropertiesAdd2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails2">
+<summary>
+txtAddPropertyDetails2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd3">
+<summary>
+ddlPropertiesAdd3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails3">
+<summary>
+txtAddPropertyDetails3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd4">
+<summary>
+ddlPropertiesAdd4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails4">
+<summary>
+txtAddPropertyDetails4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd5">
+<summary>
+ddlPropertiesAdd5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails5">
+<summary>
+txtAddPropertyDetails5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd6">
+<summary>
+ddlPropertiesAdd6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails6">
+<summary>
+txtAddPropertyDetails6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd7">
+<summary>
+ddlPropertiesAdd7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails7">
+<summary>
+txtAddPropertyDetails7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd8">
+<summary>
+ddlPropertiesAdd8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails8">
+<summary>
+txtAddPropertyDetails8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd9">
+<summary>
+ddlPropertiesAdd9 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails9">
+<summary>
+txtAddPropertyDetails9 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._ddlPropertiesAdd10">
+<summary>
+ddlPropertiesAdd10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._txtAddPropertyDetails10">
+<summary>
+txtAddPropertyDetails10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnSaveAddMultipleProperty">
+<summary>
+btnSaveAddMultipleProperty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.InvRawMaterials._btnCancelAddMultipleProperty">
+<summary>
+btnCancelAddMultipleProperty control.
 </summary>
 <remarks>
 Auto-generated field.
