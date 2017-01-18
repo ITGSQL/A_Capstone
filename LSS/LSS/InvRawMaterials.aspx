@@ -64,7 +64,7 @@
                 <td>Reorder Qty:</td>
                 <td><asp:TextBox ID="txtReorderQty" runat="server" placeholder="20" Width="100%"></asp:TextBox></td>       
             </tr>
-            <tr><td colspan="2"><asp:Button ID="btnSaveNewRawMaterial" runat="server" Text="Save" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelNewRawMaterial" runat="server" Text="Cancel" /></td></tr>
+            <tr><td colspan="2"><asp:Button ID="btnSaveNewRawMaterial" runat="server" Text="Save" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelNewRawMaterial" runat="server" Text="Cancel" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnReturn" runat="server" Text="Return" /></td></tr>
 
         </table>
     </asp:Panel>

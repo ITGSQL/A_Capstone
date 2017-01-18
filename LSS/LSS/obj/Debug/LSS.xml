@@ -159,6 +159,15 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:LSS.InvRawMaterials._btnReturn">
+<summary>
+btnReturn control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.InvRawMaterials._pnlRawMaterialProperties">
 <summary>
 pnlRawMaterialProperties control.
@@ -733,6 +742,15 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:LSS.Site._litFooter">
 <summary>
 litFooter control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Site._btnBackup">
+<summary>
+btnBackup control.
 </summary>
 <remarks>
 Auto-generated field.

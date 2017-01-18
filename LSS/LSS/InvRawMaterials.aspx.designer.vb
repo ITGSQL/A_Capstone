@@ -167,6 +167,15 @@ Partial Public Class InvRawMaterials
     Protected WithEvents btnCancelNewRawMaterial As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''btnReturn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnReturn As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''pnlRawMaterialProperties control.
     '''</summary>
     '''<remarks>

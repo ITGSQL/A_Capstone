@@ -66,4 +66,13 @@ Partial Public Class Site
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents litFooter As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''btnBackup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnBackup As Global.System.Web.UI.WebControls.Button
 End Class

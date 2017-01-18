@@ -176,6 +176,7 @@
             <%--<li><a href="KnowledgeBase.aspx">Knowledge Base</a></li>
             <li><a href="rpt_ReportGen.aspx">Report</a></li>--%>
             <asp:Literal ID="litMenu" runat="server"></asp:Literal>
+                   
               </div>
             <!-- <li><a href="#">Help</a></li> -->
         </div>
@@ -200,7 +201,7 @@
         <footer class="footer">
             <div class="containerFoot">
                 <div style="text-align: center; color:#808080; font-size:small; padding: 10px" ><center><asp:Literal ID="litFooter" runat="server"></asp:Literal></center> <%--&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="VersionNotes.aspx">Version Notes</a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="ActivityReport.aspx">Activity</a>--%>
-
+                    <asp:Button ID="btnBackup" runat="server" Text="Backup DB" />
                 </div> 
                 
             </div>

@@ -17,7 +17,7 @@
                     loadRawMaterialDetails()
                     loadRawMaterialProperties()
                     pnlRawMaterialUpdateDetails.Visible = True
-                    pnlRawMaterialProperties.Visible = True
+                    disableForm()
                 ElseIf action = "COPY" Then
                     copyItemToNewItem()
                 ElseIf action = "ADDPROPERTY" Then
@@ -29,12 +29,39 @@
                 ElseIf action = "DELETEPROPERTY" Then
                     deleteProperty()
                 End If
-
             Else
                 loadRawMaterialListing()
                 pnlRawMaterialListing.Visible = True
             End If
         End If
+    End Sub
+
+    Private Sub disableForm()
+        txtName.Enabled = False
+        ddlCategory.Enabled = False
+        ddlBrand.Enabled = False
+        txtDescription.Enabled = False
+        ddlUOM.Enabled = False
+        txtOnHandQty.Enabled = False
+        txtMinOnHandQty.Enabled = False
+        txtReorderQty.Enabled = False
+        btnSaveNewRawMaterial.Text = "Edit"
+        pnlRawMaterialProperties.Visible = True
+        btnCancelNewRawMaterial.Visible = False
+    End Sub
+
+    Private Sub enableForm()
+        txtName.Enabled = True
+        ddlCategory.Enabled = True
+        ddlBrand.Enabled = True
+        txtDescription.Enabled = True
+        ddlUOM.Enabled = True
+        txtOnHandQty.Enabled = True
+        txtMinOnHandQty.Enabled = True
+        txtReorderQty.Enabled = True
+        btnSaveNewRawMaterial.Text = "Update"
+        pnlRawMaterialProperties.Visible = False
+        btnCancelNewRawMaterial.Visible = True
     End Sub
 
     Private Sub copyItemToNewItem()
@@ -276,7 +303,7 @@
     End Sub
 
     Protected Sub btnCancelNewRawMaterial_Click(sender As Object, e As EventArgs) Handles btnCancelNewRawMaterial.Click
-        Response.Redirect("InvRawMaterials.aspx")
+        Response.Redirect("InvRawMaterials.aspx?action=update&id=" & Request.QueryString("ID"))
     End Sub
 
     Protected Sub imgNewCategory_Click(sender As Object, e As ImageClickEventArgs) Handles imgNewCategory.Click
@@ -433,6 +460,10 @@
                       WHERE RAW_MATERIAL_ID = " & Request.QueryString("id")
             g_IO_Execute_SQL(strSQL, False)
             Response.Redirect("InvRawMaterials.aspx")
+
+        ElseIf btnSaveNewRawMaterial.Text.ToUpper = "EDIT" Then
+            enableForm()
+
         Else
             If txtName.Text <> "" And txtDescription.Text <> "" And ddlBrand.SelectedValue <> -1 And ddlCategory.SelectedValue <> -1 And ddlUOM.SelectedValue <> -1 Then
                 Dim strSQL As String = "INSERT INTO [INVENTORY].[RAW_MATERIAL]
@@ -510,5 +541,9 @@
 
     Protected Sub btnCancelAddProperty_Click(sender As Object, e As EventArgs) Handles btnCancelAddProperty.Click, btnCancelAddMultipleProperty.Click
         Response.Redirect("InvRawMaterials.aspx?action=update&id=" & Request.QueryString("ID"))
+    End Sub
+
+    Protected Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+        Response.Redirect("InvRawMaterials.aspx")
     End Sub
 End Class
