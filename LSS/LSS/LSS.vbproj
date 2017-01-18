@@ -532,6 +532,7 @@
     <Content Include="images\Circle_Orange.png" />
     <Content Include="images\Circle_Red.png" />
     <Content Include="images\Circle_Yellow.png" />
+    <Content Include="images\copy.png" />
     <Content Include="images\download-csv.png" />
     <Content Include="images\Edit.png" />
     <Content Include="images\icon_user_sm.jpg" />

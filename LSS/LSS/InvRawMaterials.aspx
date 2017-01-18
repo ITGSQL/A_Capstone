@@ -7,7 +7,7 @@
     <asp:Literal ID="litMessage" runat="server"></asp:Literal>
     <asp:Panel ID="pnlRawMaterialListing" runat="server">
         <table class="table table-responsive table-bordered">
-            <tr><td>Name</td><td>Category</td><td>Brand</td><td>Description</td><td>On-Hand</td><td><a href="InvRawMaterials.aspx?&action=NewRawMaterial"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></td></tr>
+            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>On-Hand</th><th>UOM</th><th><a href="InvRawMaterials.aspx?&action=NewRawMaterial"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
             <asp:Repeater ID="rptrRawMaterialListing" runat="server">
                 <ItemTemplate>
                     <tr><td><%#DataBinder.Eval(Container.DataItem, "Name") %></td>
@@ -15,8 +15,10 @@
                         <td><%#DataBinder.Eval(Container.DataItem, "Brand") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Description") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "onhand_qty") %></td>
-                        <td><a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Update"><img src="images/edit.png" /></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Delete"><img src="images/trash.png" /></a>
+                        <td><%#DataBinder.Eval(Container.DataItem, "UOM") %></td>
+                        <td><a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Update"><img src="images/edit.png" style="height: 16px; width: 16px;"/></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Delete"><img src="images/trash.png" style="height: 16px; width: 16px;" /></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "RAW_MATERIAL_ID") %>&action=Copy"><img src="images/copy.png" style="height: 16px; width: 16px;" /></a>
                         </td></tr>
                 </ItemTemplate>
             </asp:Repeater>
@@ -69,7 +71,7 @@
 
     <asp:Panel ID="pnlRawMaterialProperties" runat="server">
         <table class="table table-bordered table-responsive">
-            <tr><td>Property</td><td>Value</td><td><asp:Literal ID="litNewPropertyImage" runat="server"></asp:Literal></td></tr>
+            <thead><tr><th>Property</th><th>Value</th><th><asp:Literal ID="litNewPropertyImage" runat="server"></asp:Literal></th></tr></thead>
             <asp:Repeater ID="rptrProperties" runat="server">
                 <ItemTemplate>
                     

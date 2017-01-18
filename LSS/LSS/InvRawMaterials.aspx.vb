@@ -18,6 +18,8 @@
                     loadRawMaterialProperties()
                     pnlRawMaterialUpdateDetails.Visible = True
                     pnlRawMaterialProperties.Visible = True
+                ElseIf action = "COPY" Then
+                    copyItemToNewItem()
                 ElseIf action = "ADDPROPERTY" Then
                     loadMultipleProperties()
                     pnlAddMultiplePropertyToRawMaterial.Visible = True
@@ -32,6 +34,49 @@
                 loadRawMaterialListing()
                 pnlRawMaterialListing.Visible = True
             End If
+        End If
+    End Sub
+
+    Private Sub copyItemToNewItem()
+        Dim strSQL As String = "Select * from [INVENTORY].[vw_Raw_Materials] WHERE raw_material_id = " & Request.QueryString("ID")
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            strSQL = "INSERT INTO [INVENTORY].[RAW_MATERIAL]
+                   ([NAME]
+                   ,[CATEGORY_ID]
+                   ,[BRAND_ID]
+                   ,[DESCRIPTION]
+                   ,[UOM_ID]
+                   ,[ONHAND_QTY]
+                   ,[MINIMUM_ONHAND_QTY]
+                   ,[REORDER_QTY])
+             SELECT [NAME] + ' - COPY'
+                   ,[CATEGORY_ID]
+                   ,[BRAND_ID]
+                   ,[DESCRIPTION]
+                   ,[UOM_ID]
+                   ,[ONHAND_QTY]
+                   ,[MINIMUM_ONHAND_QTY]
+                   ,[REORDER_QTY] 
+            FROM [INVENTORY].[vw_Raw_Materials] WHERE raw_material_id = " & Request.QueryString("ID")
+            g_IO_Execute_SQL(strSQL, False)
+            Dim newID As Integer = g_IO_Execute_SQL("select top 1 raw_material_id from inventory.vw_raw_materials order by raw_material_id desc", False)(0)(0)
+
+            strSQL = "INSERT INTO [INVENTORY].[INVENTORY_PROPERTY]
+                   ([PRODUCT_ID]
+                   ,[PROPERTY_ID]
+                   ,[VALUE]
+                   ,[IS_PRODUCT])
+                    SELECT " & newID & "
+                   ,[PROPERTY_ID]
+                   ,[VALUE]
+                   ,[IS_PRODUCT]
+                    FROM [INVENTORY].[INVENTORY_PROPERTY] WHERE PRODUCT_ID =  " & Request.QueryString("ID") &
+                    " and is_product = 0"
+            g_IO_Execute_SQL(strSQL, False)
+            Response.Redirect("InvRawMaterials.aspx?action=update&id=" & newID)
+        Else
+
         End If
     End Sub
 
@@ -95,7 +140,7 @@
     End Sub
 
     Private Sub loadRawMaterialProperties()
-        Dim strSQL As String = "Select * from [INVENTORY].[VW_INVENTORY_PROPERTY] WHERE PRODUCT_ID = " & Request.QueryString("id") & " AND IS_PRODUCT = 0"
+        Dim strSQL As String = "Select * from [INVENTORY].[VW_INVENTORY_PROPERTY] WHERE PRODUCT_ID = " & Request.QueryString("id") & " And IS_PRODUCT = 0 ORDER BY NAME"
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
         If tblResults.Rows.Count > 0 Then
             rptrProperties.DataSource = tblResults
@@ -178,13 +223,6 @@
         ddlPropertiesAdd10.DataTextField = "Property"
         ddlPropertiesAdd10.DataSource = tblResults
         ddlPropertiesAdd10.DataBind()
-
-    End Sub
-
-    Private Sub setDDLProperties(ByRef dropdown As DropDownList, ByVal dropdownControlName As String, ByVal valueField As String,
-                                 ByVal TextField As String, ByVal tblResults As DataTable)
-        pnlAddMultiplePropertyToRawMaterial.FindControl(dropdownControlName)
-
 
     End Sub
 
@@ -382,8 +420,22 @@
     End Sub
 
     Protected Sub btnSaveNewRawMaterial_Click(sender As Object, e As EventArgs) Handles btnSaveNewRawMaterial.Click
-        If txtName.Text <> "" And txtDescription.Text <> "" And ddlBrand.SelectedValue <> -1 And ddlCategory.SelectedValue <> -1 And ddlUOM.SelectedValue <> -1 Then
-            Dim strSQL As String = "INSERT INTO [INVENTORY].[RAW_MATERIAL]
+        If btnSaveNewRawMaterial.Text.ToUpper = "UPDATE" Then
+            Dim strSQL As String = "UPDATE [INVENTORY].[RAW_MATERIAL]
+                   SET [NAME] = '" & txtName.Text.Replace("'", "''") & "'
+                      ,[CATEGORY_ID] = " & ddlCategory.SelectedValue & "
+                      ,[BRAND_ID] = " & ddlBrand.SelectedValue &
+                      ",[DESCRIPTION] = '" & txtDescription.Text.Replace("'", "''") & "'
+                      ,[UOM_ID] = " & ddlUOM.SelectedValue & "
+                      ,[ONHAND_QTY] = " & txtOnHandQty.Text.Replace("'", "''") & "
+                      ,[MINIMUM_ONHAND_QTY] = " & txtMinOnHandQty.Text.Replace("'", "''") & "
+                      ,[REORDER_QTY] = " & txtReorderQty.Text.Replace("'", "''") & "
+                      WHERE RAW_MATERIAL_ID = " & Request.QueryString("id")
+            g_IO_Execute_SQL(strSQL, False)
+            Response.Redirect("InvRawMaterials.aspx")
+        Else
+            If txtName.Text <> "" And txtDescription.Text <> "" And ddlBrand.SelectedValue <> -1 And ddlCategory.SelectedValue <> -1 And ddlUOM.SelectedValue <> -1 Then
+                Dim strSQL As String = "INSERT INTO [INVENTORY].[RAW_MATERIAL]
            ([NAME]
            ,[CATEGORY_ID]
            ,[BRAND_ID]
@@ -394,20 +446,23 @@
            ,[REORDER_QTY])
      VALUES
            ('" & txtName.Text.Replace("'", "''") & "'," &
-           ddlCategory.SelectedValue & "," &
-           ddlBrand.SelectedValue & "," &
-          "'" & txtDescription.Text.Replace("'", "''") & "'," &
-          ddlUOM.SelectedValue & "," &
-          txtOnHandQty.Text.Replace("'", "''") & "," &
-          txtMinOnHandQty.Text.Replace("'", "''") & "," &
-          txtReorderQty.Text.Replace("'", "''") & ")"
+               ddlCategory.SelectedValue & "," &
+               ddlBrand.SelectedValue & "," &
+              "'" & txtDescription.Text.Replace("'", "''") & "'," &
+              ddlUOM.SelectedValue & "," &
+              txtOnHandQty.Text.Replace("'", "''") & "," &
+              txtMinOnHandQty.Text.Replace("'", "''") & "," &
+              txtReorderQty.Text.Replace("'", "''") & ")"
 
-            Dim id As Integer = g_IO_Execute_SQL(strSQL, False).Rows(0)(0)
-            Response.Redirect("InvRawMaterials.aspx?action=update&id=" & id)
-
-
+                Dim id As Integer = g_IO_Execute_SQL(strSQL, False).Rows(0)(0)
+                Response.Redirect("InvRawMaterials.aspx?action=update&id=" & id)
+            End If
         End If
+
+
     End Sub
+
+
 
     Protected Sub btnSaveAddMultipleProperty_Click(sender As Object, e As EventArgs) Handles btnSaveAddMultipleProperty.Click
         If txtAddPropertyDetails1.Text <> "" And ddlPropertiesAdd1.SelectedValue <> -1 Then
