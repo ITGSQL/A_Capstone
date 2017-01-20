@@ -2,12 +2,63 @@
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If IsPostBack Then
+        If Not IsPostBack Then
             hidePanels()
+
+            If Not IsNothing(Request.QueryString("action")) Then
+                loadDropDowns()
+                Dim action As String = Request.QueryString("action").ToString.ToUpper
+                If action = "NEWPRODUCT" Then
+                    loadDropDowns()
+                    pnlProductsUpdateDetails.Visible = True
+                    btnSaveProduct.Text = "SAVE"
+                ElseIf action = "UPDATE" Then
+                    'loadRawMaterialDetails()
+                    'loadRawMaterialProperties()
+                    pnlProductsUpdateDetails.Visible = True
+                    disableForm()
+                ElseIf action = "COPY" Then
+                    'copyItemToNewItem()
+                ElseIf action = "ADDPROPERTY" Then
+                    loadMultipleProperties()
+                    pnlAddMultiplePropertyToProduct.Visible = True
+                ElseIf action = "UPDATEPROPERTY" Then
+                    'loadPropertyDetails()
+                    pnlAddMultiplePropertyToProduct.Visible = True
+                ElseIf action = "DELETEPROPERTY" Then
+                    'deleteProperty()
+                End If
+            Else
+                loadProductListing()
+                pnlProductListing.Visible = True
+            End If
 
         Else
 
         End If
+    End Sub
+
+    Private Sub loadProductListing()
+        Dim strSQL As String = "Select * from [INVENTORY].[vw_Products] ORDER BY Stock_Number"
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+
+        If tblResults.Rows.Count > 0 Then
+            rptrProductListing.DataSource = tblResults
+            rptrProductListing.DataBind()
+        Else
+
+        End If
+
+    End Sub
+
+    Private Sub loadProductProperties()
+        Dim strSQL As String = "Select * from [INVENTORY].[VW_INVENTORY_PROPERTY] WHERE PRODUCT_ID = " & Request.QueryString("id") & " And IS_PRODUCT = 1 ORDER BY NAME"
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            rptrProperties.DataSource = tblResults
+            rptrProperties.DataBind()
+        End If
+        litNewPropertyImage.Text = "<a href=""InvProducts.aspx?id=" & Request.QueryString("ID") & "&action=AddProperty""><img src=""images/round_add_red.png"" style=""height: 16px; width: 16px;"" /></a>"
     End Sub
 
     Private Sub disableForm()
@@ -20,9 +71,9 @@
         txtPrice.Enabled = False
         txtMinOnHandQty.Enabled = False
         txtReorderQty.Enabled = False
-        btnSaveNewRawMaterial.Text = "Edit"
+        btnSaveProduct.Text = "Edit"
         pnlRawMaterialProperties.Visible = True
-        btnCancelNewRawMaterial.Visible = False
+        btnCancelNewProduct.Visible = False
     End Sub
 
     Private Sub enableForm()
@@ -35,9 +86,9 @@
         txtPrice.Enabled = True
         txtMinOnHandQty.Enabled = True
         txtReorderQty.Enabled = True
-        btnSaveNewRawMaterial.Text = "Update"
+        btnSaveProduct.Text = "Update"
         pnlRawMaterialProperties.Visible = False
-        btnCancelNewRawMaterial.Visible = True
+        btnCancelNewProduct.Visible = True
     End Sub
 
     Private Sub resetAllSubForms()
@@ -66,7 +117,7 @@
         pnlNewProperty.Visible = False
         pnlNewUOM.Visible = False
 
-        pnlRawMaterialListing.Visible = False
+        pnlProductListing.Visible = False
         pnlRawMaterialProperties.Visible = False
         pnlProductsUpdateDetails.Visible = False
 
@@ -77,16 +128,6 @@
         loadUOM()
         loadCategories()
         loadProperties()
-    End Sub
-
-    Private Sub loadRawMaterialProperties()
-        Dim strSQL As String = "Select * from [INVENTORY].[VW_INVENTORY_PROPERTY] WHERE PRODUCT_ID = " & Request.QueryString("id") & " And IS_PRODUCT = 0 ORDER BY NAME"
-        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
-        If tblResults.Rows.Count > 0 Then
-            rptrProperties.DataSource = tblResults
-            rptrProperties.DataBind()
-        End If
-        litNewPropertyImage.Text = "<a href=""InvRawMaterials.aspx?id=" & Request.QueryString("ID") & "&action=AddProperty""><img src=""images/round_add_red.png"" style=""height: 16px; width: 16px;"" /></a>"
     End Sub
 
     Private Sub loadBrands()
@@ -186,7 +227,7 @@
         ddlCategory.DataBind()
     End Sub
 
-    Protected Sub btnCancelNewRawMaterial_Click(sender As Object, e As EventArgs) Handles btnCancelNewRawMaterial.Click
+    Protected Sub btnCancelNewRawMaterial_Click(sender As Object, e As EventArgs) Handles btnCancelNewProduct.Click
         Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("ID"))
     End Sub
 
@@ -320,7 +361,7 @@
                     litMessage.Text = "<span class=""fontRed"">An error has occurred.</span><br /><br />"
                 End Try
             End If
-            Response.Redirect("InvRawMaterials.aspx?action=update&id=" & Request.QueryString("ID"))
+            Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("ID"))
         End If
     End Sub
 
@@ -329,4 +370,57 @@
                     "(" & Request.QueryString("ID") & "," & property_id & ",'" & value.Replace("'", "''") & "',1)"
         g_IO_Execute_SQL(strsQL, False)
     End Sub
+
+    Protected Sub btnSaveAddMultipleProperty_Click(sender As Object, e As EventArgs) Handles btnSaveAddMultipleProperty.Click
+        If txtAddPropertyDetails1.Text <> "" And ddlPropertiesAdd1.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd1.SelectedValue, txtAddPropertyDetails1.Text)
+        End If
+
+        If txtAddPropertyDetails2.Text <> "" And ddlPropertiesAdd2.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd2.SelectedValue, txtAddPropertyDetails2.Text)
+        End If
+
+        If txtAddPropertyDetails3.Text <> "" And ddlPropertiesAdd3.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd3.SelectedValue, txtAddPropertyDetails3.Text)
+        End If
+
+        If txtAddPropertyDetails4.Text <> "" And ddlPropertiesAdd4.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd4.SelectedValue, txtAddPropertyDetails4.Text)
+        End If
+
+        If txtAddPropertyDetails5.Text <> "" And ddlPropertiesAdd5.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd5.SelectedValue, txtAddPropertyDetails5.Text)
+        End If
+
+        If txtAddPropertyDetails6.Text <> "" And ddlPropertiesAdd6.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd6.SelectedValue, txtAddPropertyDetails6.Text)
+        End If
+
+        If txtAddPropertyDetails7.Text <> "" And ddlPropertiesAdd7.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd7.SelectedValue, txtAddPropertyDetails7.Text)
+        End If
+
+        If txtAddPropertyDetails8.Text <> "" And ddlPropertiesAdd8.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd8.SelectedValue, txtAddPropertyDetails8.Text)
+        End If
+
+        If txtAddPropertyDetails9.Text <> "" And ddlPropertiesAdd9.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd9.SelectedValue, txtAddPropertyDetails9.Text)
+        End If
+
+        If txtAddPropertyDetails10.Text <> "" And ddlPropertiesAdd10.SelectedValue <> -1 Then
+            addPropertyToProduct(ddlPropertiesAdd10.SelectedValue, txtAddPropertyDetails10.Text)
+        End If
+
+        Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("ID"))
+    End Sub
+
+    Protected Sub btnCancelAddProperty_Click(sender As Object, e As EventArgs) Handles btnCancelAddProperty.Click, btnCancelAddMultipleProperty.Click
+        Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("ID"))
+    End Sub
+
+    Protected Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+        Response.Redirect("InvProducts.aspx")
+    End Sub
+
 End Class

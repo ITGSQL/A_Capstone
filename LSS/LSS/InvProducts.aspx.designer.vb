@@ -23,22 +23,22 @@ Partial Public Class InvProducts
     Protected WithEvents litMessage As Global.System.Web.UI.WebControls.Literal
     
     '''<summary>
-    '''pnlRawMaterialListing control.
+    '''pnlProductListing control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlRawMaterialListing As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlProductListing As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''rptrRawMaterialListing control.
+    '''rptrProductListing control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rptrRawMaterialListing As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents rptrProductListing As Global.System.Web.UI.WebControls.Repeater
     
     '''<summary>
     '''pnlProductsUpdateDetails control.
@@ -158,22 +158,31 @@ Partial Public Class InvProducts
     Protected WithEvents txtReorderQty As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''btnSaveNewRawMaterial control.
+    '''ddlLssProduced control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSaveNewRawMaterial As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ddlLssProduced As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''btnCancelNewRawMaterial control.
+    '''btnSaveProduct control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnCancelNewRawMaterial As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnSaveProduct As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnCancelNewProduct control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCancelNewProduct As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''btnReturn control.
