@@ -5,10 +5,10 @@
      <span class="formTitle">Product Management</span>
 
     <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-    <asp:Panel ID="pnlRawMaterialListing" runat="server">
+    <asp:Panel ID="pnlProductListing" runat="server">
         <table class="table table-responsive table-bordered">
-            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>Price</th><th>On-Hand</th><th><a href="InvRawMaterials.aspx?&action=NewRawMaterial"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
-            <asp:Repeater ID="rptrRawMaterialListing" runat="server">
+            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>Price</th><th>On-Hand</th><th><a href="InvProducts.aspx?&action=NewProduct"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
+            <asp:Repeater ID="rptrProductListing" runat="server">
                 <ItemTemplate>
                     <tr><td><%#DataBinder.Eval(Container.DataItem, "Stock_Number") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Category_Name") %></td>
@@ -30,8 +30,8 @@
     <asp:Panel ID="pnlProductsUpdateDetails" runat="server">
         <table class="table table-responsive table-bordered" style="max-width: 600px; float: left;">
             <tr>
-                <td>Name: </td>
-                <td><asp:TextBox ID="txtName" runat="server" placeholder="Material Name..." Width="100%"></asp:TextBox></td>
+                <td>StockNumber: </td>
+                <td><asp:TextBox ID="txtName" runat="server" placeholder="LSS Stock Number..." Width="100%"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>
@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td>Price:</td>
-                <td><asp:TextBox ID="txtPrice" runat="server" placeholder="ex:299.99" Width="100%"></asp:TextBox></td>       
+                <td><asp:TextBox ID="txtPrice" runat="server" placeholder="299.99" Width="100%"></asp:TextBox></td>       
             </tr>
             <tr>
                 <td>On-Hand Qty:</td>
@@ -68,7 +68,14 @@
                 <td>Reorder Qty:</td>
                 <td><asp:TextBox ID="txtReorderQty" runat="server" placeholder="20" Width="100%"></asp:TextBox></td>       
             </tr>
-            <tr><td colspan="2"><asp:Button ID="btnSaveNewRawMaterial" runat="server" Text="Save" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelNewRawMaterial" runat="server" Text="Cancel" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnReturn" runat="server" Text="Return" /></td></tr>
+            <tr>
+                <td>LSS PRODUCED:</td>
+                <td><asp:DropDownList ID="ddlLssProduced" runat="server">
+                        <asp:ListItem Value ="0" Text ="NO"></asp:ListItem>
+                        <asp:ListItem Value ="1" Text ="YES"></asp:ListItem>
+                    </asp:DropDownList></td>       
+            </tr>
+            <tr><td colspan="2"><asp:Button ID="btnSaveProduct" runat="server" Text="Save" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelNewProduct" runat="server" Text="Cancel" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnReturn" runat="server" Text="Return" /></td></tr>
 
         </table>
     </asp:Panel>
