@@ -13,20 +13,20 @@
                     pnlProductsUpdateDetails.Visible = True
                     btnSaveProduct.Text = "SAVE"
                 ElseIf action = "UPDATE" Then
-                    'loadRawMaterialDetails()
-                    'loadRawMaterialProperties()
+                    loadProductDetails()
+                    loadProductProperties()
                     pnlProductsUpdateDetails.Visible = True
                     disableForm()
                 ElseIf action = "COPY" Then
-                    'copyItemToNewItem()
+                    copyItemToNewItem()
                 ElseIf action = "ADDPROPERTY" Then
                     loadMultipleProperties()
                     pnlAddMultiplePropertyToProduct.Visible = True
                 ElseIf action = "UPDATEPROPERTY" Then
-                    'loadPropertyDetails()
-                    pnlAddMultiplePropertyToProduct.Visible = True
+                    loadPropertyDetails()
+                    ''pnlAddMultiplePropertyToProduct.Visible = True
                 ElseIf action = "DELETEPROPERTY" Then
-                    'deleteProperty()
+                    deleteProperty()
                 End If
             Else
                 loadProductListing()
@@ -71,9 +71,11 @@
         txtPrice.Enabled = False
         txtMinOnHandQty.Enabled = False
         txtReorderQty.Enabled = False
-        btnSaveProduct.Text = "Edit"
-        pnlRawMaterialProperties.Visible = True
         btnCancelNewProduct.Visible = False
+        ddlLssProduced.Enabled = False
+        btnSaveProduct.Text = "Edit"
+        pnlProductProperties.Visible = True
+
     End Sub
 
     Private Sub enableForm()
@@ -86,9 +88,10 @@
         txtPrice.Enabled = True
         txtMinOnHandQty.Enabled = True
         txtReorderQty.Enabled = True
+        ddlLssProduced.Enabled = True
         btnSaveProduct.Text = "Update"
-        pnlRawMaterialProperties.Visible = False
         btnCancelNewProduct.Visible = True
+        pnlProductProperties.Visible = False
     End Sub
 
     Private Sub resetAllSubForms()
@@ -118,7 +121,7 @@
         pnlNewUOM.Visible = False
 
         pnlProductListing.Visible = False
-        pnlRawMaterialProperties.Visible = False
+        pnlProductProperties.Visible = False
         pnlProductsUpdateDetails.Visible = False
 
     End Sub
@@ -421,6 +424,166 @@
 
     Protected Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
         Response.Redirect("InvProducts.aspx")
+    End Sub
+
+    Private Function validatePrice()
+        Dim isValid = True
+
+        Try
+            Dim test As Decimal = txtPrice.Text
+        Catch ex As Exception
+            isValid = False
+        End Try
+
+
+        Return isValid
+    End Function
+
+    Protected Sub btnSaveNewRawMaterial_Click(sender As Object, e As EventArgs) Handles btnSaveProduct.Click
+        If btnSaveProduct.Text.ToUpper = "UPDATE" Then
+            If (validatePrice()) Then
+                Dim strSQL As String = "UPDATE [INVENTORY].[PRODUCT]
+                   SET [STOCK_NUMBER] = '" & txtName.Text.Replace("'", "''") & "'
+                      ,[CATEGORY_ID] = " & ddlCategory.SelectedValue & "
+                      ,[BRAND_ID] = " & ddlBrand.SelectedValue & "
+                      ,[DESCRIPTION] = '" & txtDescription.Text.Replace("'", "''") & "'
+                      ,[PRICE] = " & txtPrice.Text.Replace("'", "''").Replace("$", "") & "
+                      ,[UOM_ID] = " & ddlUOM.SelectedValue & "
+                      ,[ONHAND_QTY] = " & txtOnHandQty.Text.Replace("'", "''") & "
+                      ,[MINIMUM_ONHAND_QTY] = " & txtMinOnHandQty.Text.Replace("'", "''") & "
+                      ,[REORDER_QTY] = " & txtReorderQty.Text.Replace("'", "''") & "
+                      ,[IS_LSS_PRODUCED] = " & ddlLssProduced.SelectedValue & "
+                      WHERE PRODUCT_ID = " & Request.QueryString("id")
+                g_IO_Execute_SQL(strSQL, False)
+                Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("id"))
+            Else
+                litMessage.Text = "You must enter a valid price for the product."
+            End If
+
+
+        ElseIf btnSaveProduct.Text.ToUpper = "EDIT" Then
+            enableForm()
+
+        Else
+            If (validatePrice()) Then
+                If txtName.Text <> "" And txtDescription.Text <> "" And ddlBrand.SelectedValue <> -1 And ddlCategory.SelectedValue <> -1 And ddlUOM.SelectedValue <> -1 Then
+                    Dim strSQL As String = "INSERT INTO [INVENTORY].[PRODUCT]
+                           ([STOCK_NUMBER]
+                           ,[CATEGORY_ID]
+                           ,[BRAND_ID]
+                           ,[DESCRIPTION]
+                           ,[PRICE]
+                           ,[UOM_ID]
+                           ,[ONHAND_QTY]
+                           ,[MINIMUM_ONHAND_QTY]
+                           ,[REORDER_QTY]
+                           ,[IS_LSS_PRODUCED])
+                     VALUES
+                           ('" & txtName.Text.Replace("'", "''") & "'," &
+                                   ddlCategory.SelectedValue & "," &
+                                   ddlBrand.SelectedValue & "," &
+                                  "'" & txtDescription.Text.Replace("'", "''") & "'," &
+                                  txtPrice.Text.Replace("'", "''").Replace("$", "") & "," &
+                                  ddlUOM.SelectedValue & "," &
+                                  txtOnHandQty.Text.Replace("'", "''") & "," &
+                                  txtMinOnHandQty.Text.Replace("'", "''") & "," &
+                                  txtReorderQty.Text.Replace("'", "''") & "," &
+                                  ddlLssProduced.SelectedValue & ")"
+
+                    Dim id As Integer = g_IO_Execute_SQL(strSQL, False).Rows(0)(0)
+                    Response.Redirect("InvProducts.aspx?action=update&id=" & id)
+                End If
+            Else
+                litMessage.Text = "You must enter a valid price for the product."
+            End If
+
+        End If
+
+
+    End Sub
+
+    Private Sub loadProductDetails()
+        Dim strSQL As String = "Select * from INVENTORY.VW_PRODUCTS WHERE PRODUCT_ID = " & Request.QueryString("ID")
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+
+        If tblResults.Rows.Count > 0 Then
+            txtName.Text = tblResults.Rows(0)("STOCK_NUMBER")
+            ddlCategory.SelectedValue = tblResults.Rows(0)("CATEGORY_ID")
+            ddlBrand.SelectedValue = tblResults.Rows(0)("BRAND_ID")
+            ddlUOM.SelectedValue = tblResults.Rows(0)("UOM_ID")
+            txtDescription.Text = tblResults.Rows(0)("DESCRIPTION")
+            txtPrice.Text = tblResults.Rows(0)("PRICE")
+            txtOnHandQty.Text = tblResults.Rows(0)("ONHAND_QTY")
+            txtMinOnHandQty.Text = tblResults.Rows(0)("MINIMUM_ONHAND_QTY")
+            txtReorderQty.Text = tblResults.Rows(0)("REORDER_QTY")
+            ddlLssProduced.SelectedValue = IIf(tblResults.Rows(0)("IS_LSS_PRODUCED").ToString.ToUpper = "TRUE", 1, 0)
+            btnSaveProduct.Text = "UPDATE"
+        End If
+    End Sub
+
+    Private Sub copyItemToNewItem()
+        Dim strSQL As String = "Select * from [INVENTORY].[VW_PRODUCTS] WHERE PRODUCT_ID = " & Request.QueryString("ID")
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            strSQL = "INSERT INTO [INVENTORY].[PRODUCT]
+                   ([STOCK_NUMBER]
+                   ,[CATEGORY_ID]
+                   ,[BRAND_ID]
+                   ,[DESCRIPTION]
+                   ,[PRICE]
+                   ,[UOM_ID]
+                   ,[ONHAND_QTY]
+                   ,[MINIMUM_ONHAND_QTY]
+                   ,[REORDER_QTY]
+                   ,[IS_LSS_PRODUCED])
+             SELECT [STOCK_NUMBER] + ' - COPY'
+                   ,[CATEGORY_ID]
+                   ,[BRAND_ID]
+                   ,[DESCRIPTION]
+                   ,[PRICE]
+                   ,[UOM_ID]
+                   ,[ONHAND_QTY]
+                   ,[MINIMUM_ONHAND_QTY]
+                   ,[REORDER_QTY] , [IS_LSS_PRODUCED]
+            FROM [INVENTORY].[vw_PRODUCTS] WHERE PRODUCT_ID = " & Request.QueryString("ID")
+            g_IO_Execute_SQL(strSQL, False)
+            Dim newID As Integer = g_IO_Execute_SQL("select top 1 PRODUCT_ID from inventory.VW_PRODUCTS order by PRODUCT_ID desc", False)(0)(0)
+
+            strSQL = "INSERT INTO [INVENTORY].[INVENTORY_PROPERTY]
+                   ([PRODUCT_ID]
+                   ,[PROPERTY_ID]
+                   ,[VALUE]
+                   ,[IS_PRODUCT])
+                    SELECT " & newID & "
+                   ,[PROPERTY_ID]
+                   ,[VALUE]
+                   ,[IS_PRODUCT]
+                    FROM [INVENTORY].[INVENTORY_PROPERTY] WHERE PRODUCT_ID =  " & Request.QueryString("ID") &
+                    " and is_product = 1"
+            g_IO_Execute_SQL(strSQL, False)
+            Response.Redirect("InvProducts.aspx?action=update&id=" & newID)
+        Else
+
+        End If
+    End Sub
+
+    Private Sub loadPropertyDetails()
+        Dim strSQL As String = "Select * from [inventory].[VW_INVENTORY_PROPERTY] where INVENTORY_PROPERTY_ID = " & Request.QueryString("IPID")
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            pnlAddPropertyToProduct.Visible = True
+            ddlPropertiesAdd.SelectedValue = tblResults.Rows(0)("PROPERTY_ID")
+            txtAddPropertyDetails.Text = tblResults.Rows(0)("VALUE")
+            btnSaveNewProperty.Text = "Update"
+        Else
+            Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("ID"))
+        End If
+    End Sub
+
+    Private Sub deleteProperty()
+        Dim strSQL As String = "Delete from [INVENTORY].[INVENTORY_PROPERTY] WHERE INVENTORY_PROPERTY_ID = " & Request.QueryString("IPID")
+        g_IO_Execute_SQL(strSQL, False)
+        Response.Redirect("InvProducts.aspx?action=update&id=" & Request.QueryString("ID"))
     End Sub
 
 End Class

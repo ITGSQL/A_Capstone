@@ -194,13 +194,13 @@ Partial Public Class InvProducts
     Protected WithEvents btnReturn As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''pnlRawMaterialProperties control.
+    '''pnlProductProperties control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlRawMaterialProperties As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlProductProperties As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''litNewPropertyImage control.

@@ -7,13 +7,14 @@
     <asp:Literal ID="litMessage" runat="server"></asp:Literal>
     <asp:Panel ID="pnlProductListing" runat="server">
         <table class="table table-responsive table-bordered">
-            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>Price</th><th>On-Hand</th><th><a href="InvProducts.aspx?&action=NewProduct"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
+            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>Size</th><th>Price</th><th>On-Hand</th><th><a href="InvProducts.aspx?&action=NewProduct"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
             <asp:Repeater ID="rptrProductListing" runat="server">
                 <ItemTemplate>
                     <tr><td><%#DataBinder.Eval(Container.DataItem, "Stock_Number") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Category_Name") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Brand") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Description") %></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Size") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "PRICE") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "onhand_qty") %></td>
                         <td><a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Update"><img src="images/edit.png" style="height: 16px; width: 16px;"/></a>
@@ -80,7 +81,7 @@
         </table>
     </asp:Panel>
 
-    <asp:Panel ID="pnlRawMaterialProperties" runat="server">
+    <asp:Panel ID="pnlProductProperties" runat="server">
         <table class="table table-bordered table-responsive">
             <thead><tr><th>Property</th><th>Value</th><th><asp:Literal ID="litNewPropertyImage" runat="server"></asp:Literal></th></tr></thead>
             <asp:Repeater ID="rptrProperties" runat="server">
@@ -88,8 +89,8 @@
                     
                     <tr><td><%#DataBinder.Eval(Container.DataItem, "Property") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "VALUE") %></td>
-                        <td><a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "PRODUCT_ID") %>&action=UpdateProperty&IPID=<%#DataBinder.Eval(Container.DataItem, "INVENTORY_PROPERTY_ID") %>"><img src="images/edit.png" /></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvRawMaterials.aspx?id=<%#DataBinder.Eval(Container.DataItem, "PRODUCT_ID") %>&action=DeleteProperty&IPID=<%#DataBinder.Eval(Container.DataItem, "INVENTORY_PROPERTY_ID") %>"><img src="images/trash.png" /></a>
+                        <td><a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "PRODUCT_ID") %>&action=UpdateProperty&IPID=<%#DataBinder.Eval(Container.DataItem, "INVENTORY_PROPERTY_ID") %>"><img src="images/edit.png" /></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "PRODUCT_ID") %>&action=DeleteProperty&IPID=<%#DataBinder.Eval(Container.DataItem, "INVENTORY_PROPERTY_ID") %>"><img src="images/trash.png" /></a>
                         </td></tr>
                 </ItemTemplate>
             </asp:Repeater>
