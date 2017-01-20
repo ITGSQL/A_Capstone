@@ -547,6 +547,7 @@
     <Content Include="images\search_icon.png" />
     <Content Include="images\security-icon.png" />
     <Content Include="images\trash.png" />
+    <Content Include="InvProducts.aspx" />
     <Content Include="InvRawMaterials.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="rpt_RawMaterialInventory.aspx" />
@@ -560,6 +561,13 @@
     </Compile>
     <Compile Include="Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="InvProducts.aspx.designer.vb">
+      <DependentUpon>InvProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InvProducts.aspx.vb">
+      <DependentUpon>InvProducts.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="InvRawMaterials.aspx.designer.vb">
