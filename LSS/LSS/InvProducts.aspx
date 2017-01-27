@@ -7,19 +7,21 @@
     <asp:Literal ID="litMessage" runat="server"></asp:Literal>
     <asp:Panel ID="pnlProductListing" runat="server">
         <table class="table table-responsive table-bordered">
-            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>Size</th><th>Price</th><th>On-Hand</th><th><a href="InvProducts.aspx?&action=NewProduct"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
+            <thead><tr><th>Name</th><th>Category</th><th>Brand</th><th>Description</th><th>Color</th><th>Size</th><th>Price</th><th>On-Hand</th><th><a href="InvProducts.aspx?&action=NewProduct"><img src="images/round_add_red.png" style="height: 16px; width: 16px;" /></a></th></tr></thead>
             <asp:Repeater ID="rptrProductListing" runat="server">
                 <ItemTemplate>
                     <tr><td><%#DataBinder.Eval(Container.DataItem, "Stock_Number") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Category_Name") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Brand") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Description") %></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Color") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "Size") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "PRICE") %></td>
                         <td><%#DataBinder.Eval(Container.DataItem, "onhand_qty") %></td>
                         <td><a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Update"><img src="images/edit.png" style="height: 16px; width: 16px;"/></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Delete"><img src="images/trash.png" style="height: 16px; width: 16px;" /></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Copy"><img src="images/copy.png" style="height: 16px; width: 16px;" /></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=CopyToAllSizes"><img src="images/Anarchy.png" style="height: 16px; width: 16px;" /></a>
                         </td></tr>
                 </ItemTemplate>
             </asp:Repeater>

@@ -19,6 +19,8 @@
                     disableForm()
                 ElseIf action = "COPY" Then
                     copyItemToNewItem()
+                ElseIf action = "COPYTOALLSIZES" Then
+                    copyItemToAllSizes()
                 ElseIf action = "ADDPROPERTY" Then
                     loadMultipleProperties()
                     pnlAddMultiplePropertyToProduct.Visible = True
@@ -39,7 +41,9 @@
     End Sub
 
     Private Sub loadProductListing()
-        Dim strSQL As String = "Select * from [INVENTORY].[vw_Products] ORDER BY Stock_Number"
+        Dim strSQL As String = "Select *, 
+            ((SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='SIZE') + (SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='TRIM')) 'SIZE' 
+            from INVENTORY.VW_PRODUCTS P ORDER BY STOCK_NUMBER, BRAND, DESCRIPTION"
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
 
         If tblResults.Rows.Count > 0 Then
@@ -562,6 +566,67 @@
                     " and is_product = 1"
             g_IO_Execute_SQL(strSQL, False)
             Response.Redirect("InvProducts.aspx?action=update&id=" & newID)
+        Else
+
+        End If
+    End Sub
+
+    Private Sub copyItemToAllSizes()
+        Dim strSQL As String = "Select * from [INVENTORY].[VW_PRODUCTS] WHERE PRODUCT_ID = " & Request.QueryString("ID")
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+
+        If tblResults.Rows.Count > 0 Then
+            ''Create Size Array
+            Dim strSizes As String = "35:S;35:R;36:S;36:R;38:S;38:R:38L;38:S;38:R:38:L;40:S;40:R:40:L;42:S;42:R;42:L;44:S;44:R;44:L;46:S;46:R;46:L;48:S;48:R;48:L"
+            For Each size In strSizes.Split(";")
+                strSQL = "INSERT INTO [INVENTORY].[PRODUCT]
+                   ([STOCK_NUMBER]
+                   ,[CATEGORY_ID]
+                   ,[BRAND_ID]
+                   ,[DESCRIPTION]
+                   ,[PRICE]
+                   ,[UOM_ID]
+                   ,[ONHAND_QTY]
+                   ,[MINIMUM_ONHAND_QTY]
+                   ,[REORDER_QTY]
+                   ,[IS_LSS_PRODUCED])
+             SELECT [STOCK_NUMBER]
+                   ,[CATEGORY_ID]
+                   ,[BRAND_ID]
+                   ,[DESCRIPTION]
+                   ,[PRICE]
+                   ,[UOM_ID]
+                   ,[ONHAND_QTY]
+                   ,[MINIMUM_ONHAND_QTY]
+                   ,[REORDER_QTY] , [IS_LSS_PRODUCED]
+            FROM [INVENTORY].[vw_PRODUCTS] WHERE PRODUCT_ID = " & Request.QueryString("ID")
+                g_IO_Execute_SQL(strSQL, False)
+                Dim newID As Integer = g_IO_Execute_SQL("select top 1 PRODUCT_ID from inventory.VW_PRODUCTS order by PRODUCT_ID desc", False)(0)(0)
+
+                strSQL = "INSERT INTO [INVENTORY].[INVENTORY_PROPERTY]
+                   ([PRODUCT_ID]
+                   ,[PROPERTY_ID]
+                   ,[VALUE]
+                   ,[IS_PRODUCT])
+                    SELECT " & newID & "
+                   ,[PROPERTY_ID]
+                   ,[VALUE]
+                   ,[IS_PRODUCT]
+                    FROM [INVENTORY].[INVENTORY_PROPERTY] WHERE PRODUCT_ID =  " & Request.QueryString("ID") &
+                        " and is_product = 1"
+                g_IO_Execute_SQL(strSQL, False)
+
+                strSQL = "UPDATE [INVENTORY].[INVENTORY_PROPERTY]
+                        SET [VALUE] = '" & size.Split(":")(0) & "' WHERE IS_PRODUCT = 1 AND PRODUCT_ID = " & newID & " AND PROPERTY_ID = 1"
+                g_IO_Execute_SQL(strSQL, False)
+
+                strSQL = "UPDATE [INVENTORY].[INVENTORY_PROPERTY]
+                        SET [VALUE] = '" & size.Split(":")(1) & "' WHERE IS_PRODUCT = 1 AND PRODUCT_ID = " & newID & " AND PROPERTY_ID = 4"
+                g_IO_Execute_SQL(strSQL, False)
+            Next
+
+
+            Response.Redirect("InvProducts.aspx")
         Else
 
         End If

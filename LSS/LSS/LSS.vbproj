@@ -525,6 +525,7 @@
     <Content Include="Default.aspx" />
     <Content Include="images\adminCartoon.jpg" />
     <Content Include="images\ajaxLoading.gif" />
+    <Content Include="images\Anarchy.png" />
     <Content Include="images\calendar.gif" />
     <Content Include="images\Circle_Blue.png" />
     <Content Include="images\Circle_Green.png" />
