@@ -146,7 +146,7 @@ Module ModMain
                 strSql = "Insert into dbo.AUDIT (AUDIT_TYPE, AUDIT_MESSAGE, AUDIT_USER, AUDIT_DETAILS) VALUES (" &
                     "'USER AUTHENTICATION','AUTHENTICATION SUCCESS','" & USERNAME & "','LOGIN FAILURE. TIME: " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second & "')"
                 g_IO_Execute_SQL(strSql, False)
-
+                System.Web.HttpContext.Current.Session("isLoggedIn") = "true"
                 Return True
             Else
                 strSql = "Insert into dbo.AUDIT (AUDIT_TYPE, AUDIT_MESSAGE, AUDIT_USER, AUDIT_DETAILS) VALUES (" &

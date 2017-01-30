@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -95,6 +97,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="scripts\jquery.timepicker.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -120,6 +123,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AjaxFunctions.aspx" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\CHANGES.html" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -551,12 +555,55 @@
     <Content Include="InvProducts.aspx" />
     <Content Include="InvRawMaterials.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Orders.aspx" />
     <Content Include="rpt_RawMaterialInventory.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\common.js" />
+    <Content Include="scripts\font-awesome.css" />
+    <Content Include="scripts\font-awesome.min.css" />
+    <Content Include="scripts\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
+    <Content Include="scripts\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
+    <Content Include="scripts\images\ui-bg_glass_55_fbf8ee_1x400.png" />
+    <Content Include="scripts\images\ui-bg_highlight-hard_100_eeeeee_1x100.png" />
+    <Content Include="scripts\images\ui-bg_highlight-hard_100_f6f6f6_1x100.png" />
+    <Content Include="scripts\images\ui-bg_highlight-soft_15_cc0000_1x100.png" />
+    <Content Include="scripts\images\ui-icons_004276_256x240.png" />
+    <Content Include="scripts\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="scripts\images\ui-icons_ffffff_256x240.png" />
+    <None Include="scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.8.2.js" />
+    <Content Include="scripts\jquery-1.8.2.min.js" />
+    <Content Include="scripts\jQuery-2.2.4.js" />
+    <Content Include="scripts\jquery-3.0.0.min.js" />
+    <Content Include="scripts\jquery-ui-1.8.24.js" />
+    <Content Include="scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="scripts\jquery-ui.css" />
+    <Content Include="scripts\jquery-ui.js" />
+    <Content Include="scripts\jquery-ui.min.css" />
+    <Content Include="scripts\jquery-ui.min.js" />
+    <Content Include="scripts\jquery-ui.structure.css" />
+    <Content Include="scripts\jquery-ui.structure.min.css" />
+    <Content Include="scripts\jquery-ui.theme.css" />
+    <Content Include="scripts\jquery-ui.theme.min.css" />
+    <Content Include="scripts\jquery.min.js" />
+    <Content Include="scripts\jquery.timepicker.css" />
+    <Content Include="scripts\jquery.timepicker.min.js" />
+    <Content Include="scripts\justgage.1.0.1.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\npm.js" />
+    <Content Include="scripts\raphael.2.1.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjaxFunctions.aspx.designer.vb">
+      <DependentUpon>AjaxFunctions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxFunctions.aspx.vb">
+      <DependentUpon>AjaxFunctions.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -605,6 +652,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Orders.aspx.designer.vb">
+      <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.aspx.vb">
+      <DependentUpon>Orders.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Report.Master.designer.vb">
       <DependentUpon>Report.Master</DependentUpon>
@@ -664,6 +718,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -681,6 +738,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

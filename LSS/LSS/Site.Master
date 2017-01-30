@@ -34,6 +34,32 @@
             }
         })();
     </script>
+    <script>
+        var timeLeft = <%= Session.Timeout * 60 %>; // seconds
+        var isLoggedOn = <%= Session("isLoggedIn") %>;
+        var alerted = false;
+        self.setInterval(checkTime, 1000);
+        function checkTime() {
+            if (isLoggedOn){
+                jQuery("#divSessionTime").html("Session Time Remaining: " + timeLeft + " seconds.")
+                timeLeft--;
+                if (timeLeft < 0) // 2 minutes left
+                {
+                    redirect('ajaxFunctions.aspx?action=sessiontimeout');
+                }
+
+                if (timeLeft < 60) // 2 minutes left
+                {
+                    //jQuery("#divSessionTime").html("Session Time Remaining: " + timeLeft + " seconds.")
+                    if (alerted == false) {
+                        alert("Your session is about to expire.");
+                        alerted = true;
+                    }
+                }
+            }
+        }
+
+    </script>
 
     <style>
         .portalLink {
@@ -202,6 +228,7 @@
             <div class="containerFoot">
                 <div style="text-align: center; color:#808080; font-size:small; padding: 10px" ><center><asp:Literal ID="litFooter" runat="server"></asp:Literal></center> <%--&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="VersionNotes.aspx">Version Notes</a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="ActivityReport.aspx">Activity</a>--%>
                     <asp:Button ID="btnBackup" runat="server" Text="Backup DB" />
+                    <div style="float: right;" id="divSessionTime">&nbsp;</div>
                 </div> 
                 
             </div>

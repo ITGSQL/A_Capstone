@@ -43,6 +43,7 @@
     Private Sub loadProductListing()
         Dim strSQL As String = "Select *, 
             ((SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='SIZE') + (SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='TRIM')) 'SIZE' 
+            ,(SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='COLOR') AS 'COLOR'
             from INVENTORY.VW_PRODUCTS P ORDER BY STOCK_NUMBER, BRAND, DESCRIPTION"
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
 
@@ -577,7 +578,8 @@
 
         If tblResults.Rows.Count > 0 Then
             ''Create Size Array
-            Dim strSizes As String = "35:S;35:R;36:S;36:R;38:S;38:R:38L;38:S;38:R:38:L;40:S;40:R:40:L;42:S;42:R;42:L;44:S;44:R;44:L;46:S;46:R;46:L;48:S;48:R;48:L"
+            Dim strSizes As String = "35:R;36:S;36:R;38:S;38:R:38L;38:S;38:R:38:L;40:S;40:R:40:L;42:S;42:R;42:L;44:S;44:R;44:L;46:S;46:R;46:L;48:S;48:R;48:L"
+            ''Dim strSizes As String = "35:S;35:R;36:S;36:R"
             For Each size In strSizes.Split(";")
                 strSQL = "INSERT INTO [INVENTORY].[PRODUCT]
                    ([STOCK_NUMBER]
