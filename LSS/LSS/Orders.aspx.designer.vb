@@ -41,11 +41,20 @@ Partial Public Class Orders
     Protected WithEvents pnlAddItem As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''pnlNewCustomer control.
+    '''pnlCustomer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlNewCustomer As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlCustomer As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''txtCustomerFirstName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCustomerFirstName As Global.System.Web.UI.WebControls.TextBox
 End Class

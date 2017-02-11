@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ConnectionString-Web.config Connection String" description="ConnectionString Connection String used in web.config by the application to access the database." defaultValue="Server=lssdb.c5m1bhdh4foe.us-east-1.rds.amazonaws.com;Database=LSS;User Id=DBA;Password=Sh0wmeurBo0bs!!;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Projects\\A_Capstone\\LSS\\LSS\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

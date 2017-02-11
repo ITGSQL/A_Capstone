@@ -1306,6 +1306,67 @@ To modify move field declaration from designer file to code-behind file.
  Returns the Asp log object.
  </summary>
 </member>
+<member name="T:LSS.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:LSS.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:LSS.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="F:LSS.Orders._pnlOrderDetails">
+<summary>
+pnlOrderDetails control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._pnlCustomerSearch">
+<summary>
+pnlCustomerSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._pnlAddItem">
+<summary>
+pnlAddItem control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._pnlCustomer">
+<summary>
+pnlCustomer control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._txtCustomerFirstName">
+<summary>
+txtCustomerFirstName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.Report._HeadContent">
 <summary>
 HeadContent control.

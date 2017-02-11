@@ -16,7 +16,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>LSS</RootNamespace>
     <AssemblyName>LSS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,11 +82,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -95,6 +94,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="scripts\jquery.timepicker.d.ts" />
@@ -526,6 +526,7 @@
     <Content Include="Content\jquery.ui.position.js" />
     <Content Include="Content\print.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Customers.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="images\adminCartoon.jpg" />
     <Content Include="images\ajaxLoading.gif" />
@@ -572,6 +573,7 @@
     <Content Include="scripts\images\ui-icons_004276_256x240.png" />
     <Content Include="scripts\images\ui-icons_cc0000_256x240.png" />
     <Content Include="scripts\images\ui-icons_ffffff_256x240.png" />
+    <None Include="My Project\PublishProfiles\Local.pubxml" />
     <None Include="scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="scripts\jquery-1.8.2.js" />
     <Content Include="scripts\jquery-1.8.2.min.js" />
@@ -602,6 +604,13 @@
     </Compile>
     <Compile Include="AjaxFunctions.aspx.vb">
       <DependentUpon>AjaxFunctions.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Customers.aspx.designer.vb">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.aspx.vb">
+      <DependentUpon>Customers.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.vb">
