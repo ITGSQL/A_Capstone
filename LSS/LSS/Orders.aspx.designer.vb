@@ -23,6 +23,33 @@ Partial Public Class Orders
     Protected WithEvents pnlOrderDetails As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
+    '''lblCustomerName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCustomerName As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblCustomerAddress control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCustomerAddress As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblCitySateZip control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCitySateZip As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''pnlCustomerSearch control.
     '''</summary>
     '''<remarks>
@@ -30,6 +57,42 @@ Partial Public Class Orders
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents pnlCustomerSearch As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''ddlSearchOptions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlSearchOptions As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnCustomerSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCustomerSearch As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnShowNewCustomerPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnShowNewCustomerPanel As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''pnlAddItem control.
@@ -50,11 +113,110 @@ Partial Public Class Orders
     Protected WithEvents pnlCustomer As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''txtCustomerFirstName control.
+    '''txtFirstName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCustomerFirstName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFirstName As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtLastName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtLastName As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtAddress1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddress1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtAddress2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtAddress2 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtCity control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCity As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ddlState control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlState As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''txtZip control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtZip As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtPhone control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPhone As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtEmail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEmail As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnSaveNewCustomer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveNewCustomer As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnClearNewCustomerForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnClearNewCustomerForm As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnCancelNewCustomer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCancelNewCustomer As Global.System.Web.UI.WebControls.Button
 End Class

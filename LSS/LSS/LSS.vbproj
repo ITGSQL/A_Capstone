@@ -526,6 +526,7 @@
     <Content Include="Content\jquery.ui.position.js" />
     <Content Include="Content\print.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CustomerManagment.aspx" />
     <Content Include="Customers.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="images\adminCartoon.jpg" />
@@ -604,6 +605,13 @@
     </Compile>
     <Compile Include="AjaxFunctions.aspx.vb">
       <DependentUpon>AjaxFunctions.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="CustomerManagment.aspx.designer.vb">
+      <DependentUpon>CustomerManagment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerManagment.aspx.vb">
+      <DependentUpon>CustomerManagment.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Customers.aspx.designer.vb">
