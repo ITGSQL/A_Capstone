@@ -276,4 +276,13 @@ Module ModMain
         g_IO_Execute_SQL(strSQL, False)
     End Sub
 
+    Public Sub decrementProductInventory(ByVal productID As Integer, ByVal qty As Integer)
+        Dim strSQL As String = "Update inventory.vw_Products set ONHAND_QTY = (ONHAND_QTY - " & qty & ") where product_id = " & productID
+        g_IO_Execute_SQL(strSQL, False)
+    End Sub
+
+    Public Sub incrementProductInventory(ByVal productID As Integer, ByVal qty As Integer)
+        Dim strSQL As String = "Update inventory.vw_Products set ONHAND_QTY = (ONHAND_QTY + " & qty & ") where product_id = " & productID
+        g_IO_Execute_SQL(strSQL, False)
+    End Sub
 End Module

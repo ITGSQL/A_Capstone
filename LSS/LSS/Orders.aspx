@@ -4,18 +4,44 @@
         .auto-style1 {
             height: 48px;
         }
+
+        a.buttonLink {
+            padding: 5px 10px;
+            background-color: #c7c7c7;
+            border: thin solid #808080;
+            color: black;
+            cursor: pointer;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:Panel ID="pnlOrderDetails" runat="server">
         <h3>Order Details</h3>
-        <div style="width: 90%; border: thin solid black; margin: 0 auto;">
+        <div style="width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
             <h4>Customer</h4>
             <table class="table table-responsive table-bordered">
                 <tr><td>Name</td><td><asp:Label ID="lblCustomerName" runat="server" Text="lblCustomerName"></asp:Label></td></tr>
                 <tr><td>Address</td><td><asp:Label ID="lblCustomerAddress" runat="server" Text="lblCustomerAddress"></asp:Label></td></tr>
                 <tr><td>&nbsp;</td><td><asp:Label ID="lblCitySateZip" runat="server" Text="lblCitystateZip"></asp:Label></td></tr>
             </table>
+        </div>
+
+        <div style="width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
+            <h4>Enter Product Code</h4>
+            <asp:Literal ID="litProductEntryError" runat="server"></asp:Literal>
+            <table class="table table-responsive table-bordered">
+                <tr><td>Product: <asp:TextBox ID="txtProductCode_Add" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;QTY: <asp:TextBox ID="txtQty" Text="1" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnAddProduct" runat="server" Text="Add" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
+            <h4>Current Order</h4>
+            <asp:Literal ID="litCurOrderListing" runat="server"></asp:Literal>
+        </div>
+        <div style="visibility: hidden; width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
+            <asp:Literal ID="litOrderID" runat="server"></asp:Literal>
+            <asp:Literal ID="litCustID" runat="server"></asp:Literal>
         </div>
     </asp:Panel>
 
@@ -33,6 +59,7 @@
             </td></tr>
             <tr><td class="auto-style1"></td><td class="auto-style1"><asp:Button ID="btnCustomerSearch" runat="server" Text="Search" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnShowNewCustomerPanel" runat="server" Text="Add New" /></td></tr>
         </table>
+        <asp:Literal ID="litSearchResults_Cust" runat="server"></asp:Literal>
     </asp:Panel>
 
     <asp:Panel ID="pnlAddItem" runat="server">

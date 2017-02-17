@@ -1358,6 +1358,69 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:LSS.Orders._litProductEntryError">
+<summary>
+litProductEntryError control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._txtProductCode_Add">
+<summary>
+txtProductCode_Add control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._txtQty">
+<summary>
+txtQty control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._btnAddProduct">
+<summary>
+btnAddProduct control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litCurOrderListing">
+<summary>
+litCurOrderListing control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litOrderID">
+<summary>
+litOrderID control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litCustID">
+<summary>
+litCustID control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.Orders._pnlCustomerSearch">
 <summary>
 pnlCustomerSearch control.
@@ -1397,6 +1460,15 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:LSS.Orders._btnShowNewCustomerPanel">
 <summary>
 btnShowNewCustomerPanel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litSearchResults_Cust">
+<summary>
+litSearchResults_Cust control.
 </summary>
 <remarks>
 Auto-generated field.

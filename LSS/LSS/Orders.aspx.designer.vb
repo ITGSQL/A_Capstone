@@ -50,6 +50,69 @@ Partial Public Class Orders
     Protected WithEvents lblCitySateZip As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''litProductEntryError control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litProductEntryError As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''txtProductCode_Add control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtProductCode_Add As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtQty control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtQty As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnAddProduct control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddProduct As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''litCurOrderListing control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litCurOrderListing As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''litOrderID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litOrderID As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''litCustID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litCustID As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
     '''pnlCustomerSearch control.
     '''</summary>
     '''<remarks>
@@ -93,6 +156,15 @@ Partial Public Class Orders
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnShowNewCustomerPanel As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''litSearchResults_Cust control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litSearchResults_Cust As Global.System.Web.UI.WebControls.Literal
     
     '''<summary>
     '''pnlAddItem control.
