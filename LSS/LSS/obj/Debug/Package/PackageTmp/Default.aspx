@@ -6,4 +6,6 @@
     <span class="portalLink" onclick="redirect('InvRawMaterials.aspx')">Raw Material Inventory</span>
     <span class="portalLink" onclick="redirect('OrderHistory.aspx')">Order History</span>
     <span class="portalLink" onclick="redirect('Orders.aspx')">Orders</span>
+    <span class="portalLink" onclick="redirect('CustomerManagement.aspx')">Customer Management</span>
+    <span class="portalLink" onclick="redirect('Tables.aspx')">Table Data</span>
 </asp:Content>

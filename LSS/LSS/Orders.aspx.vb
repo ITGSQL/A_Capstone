@@ -30,19 +30,17 @@
 
     End Sub
 
-    Private Sub LoadOrderDetails(ByVal Header_ID As Integer, ByVal orderType As String)
-        If orderType.ToUpper = "TEMP" Then
-            ''Load the current Temp Order
-            strSQL = "Select * from SALES.VW_DETAILS_TEMP WHERE HEADER_ID = " & Header_ID
-            Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
-            If tblResults.Rows.Count > 0 Then
-                loadOrderLines(tblResults)
-            Else
-                ''Do nothing
-                litCurOrderListing.Text = "No items have been added at this time."
-            End If
+    Private Sub LoadOrderDetails(ByVal Header_ID As Integer)
+        ''Load the current Temp Order
+        strSQL = "Select * from SALES.VW_DETAILS WHERE HEADER_ID = " & Header_ID
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            loadOrderLines(tblResults)
+            btnOrderDetails_Save.Visible = True
+            btnOrderDetails_Clear.Visible = True
         Else
-            ''Load a past order
+            ''Do nothing
+            litCurOrderListing.Text = "No items have been added at this time."
         End If
     End Sub
 
@@ -63,6 +61,10 @@
         Dim SalesTax As Decimal = 0.08 * SubTotal
         Dim GrandTotal As Decimal = SubTotal + SalesTax
 
+        litSubTotal.Text = Format(SubTotal, "0.00")
+        litSalesTax.Text = Format(SalesTax, "0.00")
+        litGrandTotal.Text = Format(GrandTotal, "0.00")
+
         ''Add the Final Totals
         litCurOrderListing.Text &= "<tr><td colspan=""4"">&nbsp;</td><td>SubTotal  </td><td>$" & Format(SubTotal, "0.00") & "</td></tr>"
         litCurOrderListing.Text &= "<tr><td colspan=""4"">&nbsp;</td><td>Sales Tax  </td><td>$" & Format(SalesTax, "0.00") & "</td></tr>"
@@ -73,13 +75,13 @@
 
     Private Sub createOrder(ByVal custID As Integer)
         ''Check to see if an existing order is there
-        strSQL = "Select header_id from SALES.HEADER_TEMP where Customers_ID = " & custID
+        strSQL = "Select header_id from Sales.Header where Customers_ID = " & custID & " and is_Paid = 0"
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
         If tblResults.Rows.Count > 0 Then
             litOrderID.Text = tblResults.Rows(0)(0)
-            LoadOrderDetails(tblResults.Rows(0)(0), "TEMP")
+            LoadOrderDetails(tblResults.Rows(0)(0))
         Else
-            strSQL = "Insert into SALES.HEADER_TEMP (REGISTER_ID, IS_VENDOR, CUSTOMERS_ID, SALESPERSON_ID) VALUES (1,0," & custID & "," & Session("USER_ID") & ")"
+            strSQL = "Insert into Sales.Header (REGISTER_ID, IS_VENDOR, CUSTOMERS_ID, SALESPERSON_ID) VALUES (1,0," & custID & "," & Session("USER_ID") & ")"
             Dim orderInt As Integer = g_IO_Execute_SQL(strSQL, False)(0)(0)
             litOrderID.Text = orderInt
         End If
@@ -87,11 +89,19 @@
 
     End Sub
 
+
+
     Private Sub hidePanels()
-        pnlAddItem.Visible = False
+        pnlPaymentTypes.Visible = False
         pnlCustomer.Visible = False
         pnlCustomerSearch.Visible = False
         pnlOrderDetails.Visible = False
+        pnlPayment_Cash.Visible = False
+        pnlPayment_Check.Visible = False
+        pnlPayment_Credit.Visible = False
+        ''btnOrderDetails_Save.Visible = False
+        ''btnOrderDetails_Clear.Visible = False
+
     End Sub
 
     Private Sub showOrderDetailsPanel()
@@ -108,12 +118,12 @@
         strSQL = "Select C.*, S.state_name from Sales.Customer C  inner join dbo.state S on S.state_id = C.state_id where customer_id = " & customer_id & ""
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
         If tblResults.Rows.Count > 0 Then
-            lblCustomerName.Text = tblResults(0)("First_Name") & " " & tblResults(0)("Last_Name")
-            lblCustomerAddress.Text = tblResults(0)("Address1")
-            If tblResults(0)("Last_Name").ToString <> "" Then
-                lblCustomerAddress.Text &= ", " & tblResults(0)("Address2")
+            lblCustomerName.Text = tblResults(0)("First_Name").ToString & " " & tblResults(0)("Last_Name").ToString
+            lblCustomerAddress.Text = tblResults(0)("Address1").ToString
+            If tblResults(0)("Address2").ToString <> "" Then
+                lblCustomerAddress.Text &= ", " & tblResults(0)("Address2").ToString
             End If
-            lblCitySateZip.Text = tblResults(0)("CITY") & ", " & tblResults(0)("state_name") & " " & tblResults(0)("ZIP")
+            lblCitySateZip.Text = tblResults(0)("CITY").ToString & ", " & tblResults(0)("state_name").ToString & " " & tblResults(0)("ZIP").ToString
             showOrderDetailsPanel()
             createOrder(tblResults(0)("CUSTOMER_ID"))
         Else
@@ -187,6 +197,7 @@
         ddlState.DataTextField = "State_Name"
         ddlState.DataSource = tblResults
         ddlState.DataBind()
+
     End Sub
 
     Private Function validateAddProductForm()
@@ -225,11 +236,11 @@
                     ''Are there enough? 
                     If tblResults.Rows(0)("ONHAND_QTY") >= txtQty.Text.Replace("'", "''") Then
                         ''DO STUFF HERE!!!
-                        strSQL = "Insert into SALES.DETAILS_TEMP (header_id, product_id, qty, price) VALUES (" & litOrderID.Text & "," & tblResults.Rows(0)("PRODUCT_ID") & "," & txtQty.Text & "," & tblResults.Rows(0)("PRICE") & ")"
+                        strSQL = "Insert into SALES.DETAILS (header_id, product_id, qty, price) VALUES (" & litOrderID.Text & "," & tblResults.Rows(0)("PRODUCT_ID") & "," & txtQty.Text & "," & tblResults.Rows(0)("PRICE") & ")"
                         g_IO_Execute_SQL(strSQL, False)
                         ''decrement the original order
                         decrementProductInventory(tblResults.Rows(0)("PRODUCT_ID"), txtQty.Text)
-                        strSQL = "Select * from SALES.VW_DETAILS_TEMP where header_id = " & litOrderID.Text & " order by details_id"
+                        strSQL = "Select * from SALES.VW_DETAILS where header_id = " & litOrderID.Text & " order by details_id"
                         loadOrderLines(g_IO_Execute_SQL(strSQL, False))
                         txtProductCode_Add.Text = ""
                     Else
@@ -251,20 +262,138 @@
             End If
         End If
 
+    End Sub
 
+    Protected Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnOrderDetails_Clear.Click
+        strSQL = "Select * from Sales.Details where header_id = " & litOrderID.Text
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
 
+        ''Add the inventory back into the product inventory
+        If tblResults.Rows.Count > 0 Then
+            For Each row In tblResults.Rows
+                incrementProductInventory(row("Product_id"), row("Qty"))
+                strSQL = "Delete from Sales.Details where Details_id = " & row("Details_ID")
+                g_IO_Execute_SQL(strSQL, False)
+            Next
+        End If
 
+        ''Delete the header
+        strSQL = "DELETE from SALES.DETAILS where header_id = " & litOrderID.Text
+        g_IO_Execute_SQL(strSQL, False)
 
+        Response.Redirect("Orders.aspx?cust=" & Request.QueryString("CUST"))
+    End Sub
 
+    Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnOrderDetails_Save.Click
+        hidePanels()
+        pnlPaymentTypes.Visible = True
+    End Sub
 
+    Protected Sub btnPayCancel_Click(sender As Object, e As EventArgs) Handles btnPaymentTypes_Cancel.Click, btnPayCancel_Cash.Click, btnPayCancel_Check.Click, btnPayCancel_Credit.Click
+        clearPaymentForms()
+        hidePanels()
+        pnlOrderDetails.Visible = True
+    End Sub
 
+    Protected Sub btnPaymentType_Cash_Click(sender As Object, e As EventArgs) Handles btnPaymentType_Cash.Click
+        hidePanels()
+        checkExistingPayments()
+        litPayment_Cash_TotalDue.Text = "$" & litGrandTotal.Text
+        pnlPayment_Cash.Visible = True
+    End Sub
 
+    Protected Sub btnPaymentType_Credit_Click(sender As Object, e As EventArgs) Handles btnPaymentType_Credit.Click
+        hidePanels()
+        pnlPayment_Credit.Visible = True
+    End Sub
 
+    Protected Sub btnPaymentType_Check_Click(sender As Object, e As EventArgs) Handles btnPaymentType_Check.Click
+        hidePanels()
+        pnlPayment_Check.Visible = True
+    End Sub
 
+    Private Sub clearPaymentForms()
+        txtPaymentCheck_CheckNumber.Text = ""
+        txtPayment_CashReceived.Text = ""
+    End Sub
 
+    Private Sub showPanel_OrderDetails()
+        pnlOrderDetails.Visible = True
+        btnOrderDetails_Clear.Visible = True
+        btnOrderDetails_Save.Visible = True
+    End Sub
 
+    Protected Sub btnPayContinue_Cash_Click(sender As Object, e As EventArgs) Handles btnPayContinue_Cash.Click
+        Try
+            Dim blnIsPaid As Boolean = False
+            Dim blnChangeRequired As Boolean = False
 
+            Dim decCashReceived As Decimal = txtPayment_CashReceived.Text
+            Dim decGrandTotal As Decimal = litGrandTotal.Text
 
+            If (decCashReceived + litPayment_Cash_TotalReceived.Text) <= decGrandTotal Then
+                If decCashReceived > 0 Then
+                    strSQL = "Insert into SALES.PAYMENTS (HEADER_ID, PAYMENT_TYPE_ID, AMOUNT) VALUES (" & litOrderID.Text & ",1," & decCashReceived & ")"
+                    g_IO_Execute_SQL(strSQL, False)
+                End If
 
+                If decCashReceived = decGrandTotal Then
+                    ''Full amount paid
+                    blnIsPaid = True
+
+                    If decCashReceived > decGrandTotal Then
+                        blnChangeRequired = True
+                    End If
+                Else
+                    txtPayment_CashReceived.Text = ""
+                End If
+            Else
+
+                ''Overpaid
+                blnChangeRequired = True
+                blnIsPaid = True
+
+                If decCashReceived > 0 Then
+                    strSQL = "Insert into SALES.PAYMENTS (HEADER_ID, PAYMENT_TYPE_ID, AMOUNT) VALUES (" & litOrderID.Text & ",1," & decCashReceived & ")"
+                    g_IO_Execute_SQL(strSQL, False)
+                End If
+
+            End If
+
+            checkExistingPayments()
+
+            If blnChangeRequired Then
+                strSQL = "Insert into SALES.PAYMENTS (HEADER_ID, PAYMENT_TYPE_ID, AMOUNT) VALUES (" & litOrderID.Text & ",4,-" & (litPayment_Cash_TotalReceived.Text) - decGrandTotal & ")"
+                g_IO_Execute_SQL(strSQL, False)
+            End If
+
+            If blnIsPaid Then
+                strSQL = "update Sales.Header set is_paid = 1, DATE_PAID = getdate(), subtotal = " & litSubTotal.Text & ",sales_tax_total = " & litSalesTax.Text & ",Grand_Total = " & litGrandTotal.Text & " where header_id = " & litOrderID.Text
+                g_IO_Execute_SQL(strSQL, False)
+
+                litPayment_Cash_Message.Text = "<span>Transaction Complete.</span><br /><span style=""display: block; margin-bottom: 100px;"">Change: $" & ((litPayment_Cash_TotalReceived.Text) - decGrandTotal).ToString("0.00") & "</span>"
+
+                btnPayCancel_Cash.Visible = False
+                txtPayment_CashReceived.Text = ""
+                txtPayment_CashReceived.Enabled = False
+
+            End If
+
+            checkExistingPayments()
+        Catch ex As Exception
+            litErrorMessage.Text = "Please enter a valid cash amount."
+        End Try
+    End Sub
+
+    Private Sub checkExistingPayments()
+        Dim totalReceived As Decimal = 0D
+        strSQL = "Select Amount From Sales.PAYMENTS where header_id = " & litOrderID.Text
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            For Each row In tblResults.Rows
+                totalReceived += row("Amount")
+            Next
+        End If
+        litPayment_Cash_TotalReceived.Text = "$" & totalReceived.ToString("0.00")
     End Sub
 End Class

@@ -159,16 +159,6 @@ Module ModIO
         strSQL = strFrontSQL & Mid(strBackSQL, I)
 
     End Sub
-
-    Public Function g_IO_GetLastRecId() As Integer
-        Dim intLastRecId As Integer
-        If g_ConnectionToUse = "MYSQL" Then
-            intLastRecId = g_IO_Execute_SQL("select last_insert_id() as recid", False).Rows(0)("RECID")
-        Else
-            intLastRecId = System.Web.HttpContext.Current.Session("NewMSSQLRECID")
-        End If
-        Return intLastRecId
-    End Function
     '
     Private Function IO_Execute_MSSQL(ByVal strSQL As String, ByRef ReturnCode As Boolean) As DataTable
 

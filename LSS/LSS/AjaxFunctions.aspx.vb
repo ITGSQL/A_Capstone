@@ -26,7 +26,7 @@
     End Sub
 
     Private Sub RemoveFromTempOrder()
-        strSQL = "Delete from SALES.DETAILS_TEMP where DETAILS_ID = " & Request.QueryString("id")
+        strSQL = "Delete from SALES.DETAILS where DETAILS_ID = " & Request.QueryString("id")
         g_IO_Execute_SQL(strSQL, False)
         incrementProductInventory(Request.QueryString("Prod"), Request.QueryString("qty"))
         Response.Redirect("Orders.aspx?Type=New&cust=" & Request.QueryString("cust"))

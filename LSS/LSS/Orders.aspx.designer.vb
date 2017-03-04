@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class Orders
     
     '''<summary>
+    '''litErrorMessage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litErrorMessage As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
     '''pnlOrderDetails control.
     '''</summary>
     '''<remarks>
@@ -95,6 +104,24 @@ Partial Public Class Orders
     Protected WithEvents litCurOrderListing As Global.System.Web.UI.WebControls.Literal
     
     '''<summary>
+    '''btnOrderDetails_Clear control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnOrderDetails_Clear As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnOrderDetails_Save control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnOrderDetails_Save As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''litOrderID control.
     '''</summary>
     '''<remarks>
@@ -111,6 +138,33 @@ Partial Public Class Orders
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents litCustID As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''litSubTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litSubTotal As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''litSalesTax control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litSalesTax As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''litGrandTotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litGrandTotal As Global.System.Web.UI.WebControls.Literal
     
     '''<summary>
     '''pnlCustomerSearch control.
@@ -165,15 +219,6 @@ Partial Public Class Orders
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents litSearchResults_Cust As Global.System.Web.UI.WebControls.Literal
-    
-    '''<summary>
-    '''pnlAddItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlAddItem As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''pnlCustomer control.
@@ -291,4 +336,157 @@ Partial Public Class Orders
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCancelNewCustomer As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''pnlPaymentTypes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlPaymentTypes As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''btnPaymentType_Cash control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPaymentType_Cash As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnPaymentType_Credit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPaymentType_Credit As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnPaymentType_Check control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPaymentType_Check As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnPaymentTypes_Cancel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPaymentTypes_Cancel As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''pnlPayment_Cash control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlPayment_Cash As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''litPayment_Cash_TotalReceived control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litPayment_Cash_TotalReceived As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''litPayment_Cash_TotalDue control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litPayment_Cash_TotalDue As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''txtPayment_CashReceived control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPayment_CashReceived As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''litPayment_Cash_Message control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents litPayment_Cash_Message As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''btnPayCancel_Cash control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPayCancel_Cash As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnPayContinue_Cash control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPayContinue_Cash As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''pnlPayment_Credit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlPayment_Credit As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''btnPayCancel_Credit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPayCancel_Credit As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''pnlPayment_Check control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlPayment_Check As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''txtPaymentCheck_CheckNumber control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPaymentCheck_CheckNumber As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnPayCancel_Check control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPayCancel_Check As Global.System.Web.UI.WebControls.Button
 End Class

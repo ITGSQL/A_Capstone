@@ -12,9 +12,16 @@
             color: black;
             cursor: pointer;
         }
+
+        .btnPaymentType {
+           height: 100px;
+           width: 200px;
+           margin: 20px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
+    <asp:Literal ID="litErrorMessage" runat="server"></asp:Literal>
     <asp:Panel ID="pnlOrderDetails" runat="server">
         <h3>Order Details</h3>
         <div style="width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
@@ -38,17 +45,24 @@
         <div style="width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
             <h4>Current Order</h4>
             <asp:Literal ID="litCurOrderListing" runat="server"></asp:Literal>
+            <div style="float: right; margin-bottom: 20px;">
+                <asp:Button ID="btnOrderDetails_Clear" runat="server" Text="Clear" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnOrderDetails_Save" runat="server" Text="Pay" />
+            </div>
         </div>
         <div style="visibility: hidden; width: 90%; border: thin solid #e0e0e0; margin: 0 auto;">
             <asp:Literal ID="litOrderID" runat="server"></asp:Literal>
             <asp:Literal ID="litCustID" runat="server"></asp:Literal>
+            <asp:Literal ID="litSubTotal" runat="server"></asp:Literal>
+            <asp:Literal ID="litSalesTax" runat="server"></asp:Literal>
+            <asp:Literal ID="litGrandTotal" runat="server"></asp:Literal>
         </div>
     </asp:Panel>
 
     <asp:Panel ID="pnlCustomerSearch" runat="server">
         <h3>Customer Search</h3>
         <table class="table table-responsive table-bordered">
-            <tr><td>Search by:</td><td><asp:DropDownList ID="ddlSearchOptions" runat="server">
+            <tr><td>Search by:</td><td>
+                <asp:DropDownList ID="ddlSearchOptions" runat="server">
                     <asp:ListItem Value="Phone" Text="Phone"></asp:ListItem>
                     <asp:ListItem Value="Name" Text="Name"></asp:ListItem>
                     <asp:ListItem Value="Email" Text="Email"></asp:ListItem>
@@ -62,10 +76,7 @@
         <asp:Literal ID="litSearchResults_Cust" runat="server"></asp:Literal>
     </asp:Panel>
 
-    <asp:Panel ID="pnlAddItem" runat="server">
-        <h3>Add Item</h3>
 
-    </asp:Panel>
 
     <asp:Panel ID="pnlCustomer" runat="server">
         <h3>New Customer</h3>
@@ -84,4 +95,65 @@
         </table>
     </asp:Panel>
 
-</asp:Content>
+
+    <asp:Panel ID="pnlPaymentTypes" runat="server">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Pay</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <asp:Button ID="btnPaymentType_Cash" runat="server" Text="Cash" CssClass="btnPaymentType" />
+                </div>
+                <div class="col-lg-4">
+                    <asp:Button ID="btnPaymentType_Credit" runat="server" Text="Credit Card" CssClass="btnPaymentType" />
+                </div>
+                <div class="col-lg-4">
+                    <asp:Button ID="btnPaymentType_Check" runat="server" Text="Check" CssClass="btnPaymentType" />
+                </div>
+            </div>
+            <div class="row" style="margin-top: 200px;">
+                <asp:Button ID="btnPaymentTypes_Cancel" runat="server" Text="Cancel Payment" />
+            </div>
+        </div>
+        
+        
+    </asp:Panel>
+
+    <asp:Panel ID="pnlPayment_Cash" runat="server">
+        <h3>Cash Payment</h3>
+        <table class="table table-responsive">
+            <tr>
+                <td>Total Received</td><td><asp:Literal ID="litPayment_Cash_TotalReceived" runat="server"></asp:Literal></td>
+            </tr>
+            <tr>
+                <td>Total Due</td><td><asp:Literal ID="litPayment_Cash_TotalDue" runat="server"></asp:Literal></td>
+            </tr>
+            <tr>
+                <td>Cash Received</td><td><asp:TextBox ID="txtPayment_CashReceived" runat="server"></asp:TextBox></td>
+            </tr>
+        </table>
+        <asp:Literal ID="litPayment_Cash_Message" runat="server"></asp:Literal>
+        <asp:Button ID="btnPayCancel_Cash" runat="server" Text="Cancel Payment" /><asp:Button ID="btnPayContinue_Cash" runat="server" Text="Continue" />
+    </asp:Panel>
+
+    <asp:Panel ID="pnlPayment_Credit" runat="server">
+        <h3>Cash Payment</h3>
+
+
+        <asp:Button ID="btnPayCancel_Credit" runat="server" Text="Cancel Payment" />
+    </asp:Panel>
+
+    <asp:Panel ID="pnlPayment_Check" runat="server">
+        <h3>Check Payment</h3>
+            <table class="table table-bordered table-responsive">
+                <tr><td>Check Number</td><td><asp:TextBox ID="txtPaymentCheck_CheckNumber" runat="server"></asp:TextBox></td></tr>
+                <tr><td>DL State</td><td></td></tr>
+            </table>
+
+        <asp:Button ID="btnPayCancel_Check" runat="server" Text="Cancel Payment" />
+    </asp:Panel>
+
+    </asp:Content>

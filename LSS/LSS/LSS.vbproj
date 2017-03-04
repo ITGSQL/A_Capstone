@@ -597,6 +597,7 @@
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\npm.js" />
     <Content Include="scripts\raphael.2.1.0.min.js" />
+    <Content Include="Tables.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -651,6 +652,7 @@
     </Compile>
     <Compile Include="ModIO.vb" />
     <Compile Include="ModMain.vb" />
+    <Compile Include="modGateway.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -697,6 +699,13 @@
     <Compile Include="Site.Master.vb">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tables.aspx.designer.vb">
+      <DependentUpon>Tables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tables.aspx.vb">
+      <DependentUpon>Tables.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

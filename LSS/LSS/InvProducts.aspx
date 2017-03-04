@@ -21,7 +21,7 @@
                         <td><a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Update"><img src="images/edit.png" style="height: 16px; width: 16px;"/></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Delete"><img src="images/trash.png" style="height: 16px; width: 16px;" /></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=Copy"><img src="images/copy.png" style="height: 16px; width: 16px;" /></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=CopyToAllSizes"><img src="images/Anarchy.png" style="height: 16px; width: 16px;" /></a>
+<%--                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="InvProducts.aspx?id=<%#DataBinder.Eval(Container.DataItem, "Product_ID") %>&action=CopyToAllSizes"><img src="images/Anarchy.png" style="height: 16px; width: 16px;" /></a>--%>
                         </td></tr>
                 </ItemTemplate>
             </asp:Repeater>
