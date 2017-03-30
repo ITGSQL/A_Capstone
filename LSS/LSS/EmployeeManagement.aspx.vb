@@ -7,6 +7,10 @@
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If IsPostBack Then
         Else
+            If IsNothing(Session("USER_ID")) Then
+                Response.Redirect("Login.aspx")
+            End If
+
             hidepanels()
             ''Are we looking at a employee?
             If IsNothing(Request.QueryString("ID")) Then

@@ -6,6 +6,10 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If IsPostBack Then
         Else
+            If IsNothing(Session("USER_ID")) Then
+                Response.Redirect("Login.aspx")
+            End If
+
             hidePanels()
 
             If IsNothing(Request.QueryString("cust")) Then
@@ -31,9 +35,14 @@
                 Catch ex As Exception
                     litErrorMessage.Text = "An error occured.<br />"
                     For Each x In Request.QueryString
-                        litErrorMessage.Text &= x.ToString & "<br />"
+                        litErrorMessage.Text &= x.ToString & ":" & Request.QueryString(x) & "<br />"
                     Next
+                    litErrorMessage.Text &= "User_ID = " & Session("USER_ID").ToString
                 End Try
+
+
+
+
 
             End If
         End If

@@ -33,7 +33,8 @@
                                 <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>' />
                             </td>
                             <td>
-                                <a href="CustomerManagement.aspx?id=<%# Eval("CUSTOMER_ID") %>">Update</a>
+                                <a href="CustomerManagement.aspx?id=<%# Eval("CUSTOMER_ID") %>&action=update">Update</a>
+                                <a href="CustomerManagement.aspx?id=<%# Eval("CUSTOMER_ID") %>&action=delete">Update</a>
                             </td>
                         </tr>
                     </ItemTemplate>
