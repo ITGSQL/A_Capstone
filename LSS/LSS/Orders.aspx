@@ -18,7 +18,22 @@
            width: 200px;
            margin: 20px;
         }
+
+        .ui-autocomplete {
+            max-height: 100px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+          }
     </style>
+    <asp:Literal ID="litHeaderCode" runat="server"></asp:Literal>
+    <script>
+        $(function () {
+            $("#<%= txtProductCode_Add.ClientID %>").autocomplete({
+                source: productTags
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:Literal ID="litErrorMessage" runat="server"></asp:Literal>

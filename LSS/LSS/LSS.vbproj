@@ -526,9 +526,10 @@
     <Content Include="Content\jquery.ui.position.js" />
     <Content Include="Content\print.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="CustomerManagment.aspx" />
+    <Content Include="CustomerManagement.aspx" />
     <Content Include="Customers.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EmployeeManagement.aspx" />
     <Content Include="images\adminCartoon.jpg" />
     <Content Include="images\ajaxLoading.gif" />
     <Content Include="images\Anarchy.png" />
@@ -574,6 +575,7 @@
     <Content Include="scripts\images\ui-icons_004276_256x240.png" />
     <Content Include="scripts\images\ui-icons_cc0000_256x240.png" />
     <Content Include="scripts\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="WebForm1.aspx" />
     <None Include="My Project\PublishProfiles\Local.pubxml" />
     <None Include="scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="scripts\jquery-1.8.2.js" />
@@ -598,7 +600,9 @@
     <Content Include="scripts\npm.js" />
     <Content Include="scripts\raphael.2.1.0.min.js" />
     <Content Include="Tables.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxFunctions.aspx.designer.vb">
@@ -608,11 +612,11 @@
       <DependentUpon>AjaxFunctions.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="CustomerManagment.aspx.designer.vb">
-      <DependentUpon>CustomerManagment.aspx</DependentUpon>
+    <Compile Include="CustomerManagement.aspx.designer.vb">
+      <DependentUpon>CustomerManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomerManagment.aspx.vb">
-      <DependentUpon>CustomerManagment.aspx</DependentUpon>
+    <Compile Include="CustomerManagement.aspx.vb">
+      <DependentUpon>CustomerManagement.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Customers.aspx.designer.vb">
@@ -627,6 +631,13 @@
     </Compile>
     <Compile Include="Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagement.aspx.designer.vb">
+      <DependentUpon>EmployeeManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement.aspx.vb">
+      <DependentUpon>EmployeeManagement.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="InvProducts.aspx.designer.vb">
@@ -705,6 +716,13 @@
     </Compile>
     <Compile Include="Tables.aspx.vb">
       <DependentUpon>Tables.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

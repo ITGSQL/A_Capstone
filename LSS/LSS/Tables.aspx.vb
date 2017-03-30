@@ -44,7 +44,7 @@
             For Each row In tblResults.Rows
                 litResults.Text &= "<tr>"
                 For Each col In tblResults.Columns
-                    litResults.Text &= "<td>" & row(col) & "</td>"
+                    litResults.Text &= "<td>" & row(col).ToString & "</td>"
                 Next
                 litResults.Text &= "</tr>"
             Next

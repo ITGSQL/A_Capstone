@@ -8,25 +8,53 @@
         Else
             hidePanels()
 
-            If IsNothing(Request.QueryString("Cust")) Then
+            If IsNothing(Request.QueryString("cust")) Then
                 ''No customer selected
                 pnlCustomerSearch.Visible = True
             Else
-                curCust = Request.QueryString("Cust")
+                Try
+                    curCust = Request.QueryString("cust")
+                    litErrorMessage.Text = curCust
 
-                ''Load the customer details
-                loadCustomerDetails()
+                    ''Load the customer details
+                    loadCustomerDetails()
+                    loadAutoComplete()
 
-                ''Current Order?
-                If IsNothing(Request.QueryString("Order")) Then
-                    ''createOrder()
-                Else
-                    curOrder = Request.QueryString("Order")
-                End If
+                    ''Current Order?
+                    If IsNothing(Request.QueryString("order")) Then
+                        'createOrder()
+                    Else
+                        curOrder = Request.QueryString("order")
+                    End If
 
-                pnlOrderDetails.Visible = True
+                    pnlOrderDetails.Visible = True
+                Catch ex As Exception
+                    litErrorMessage.Text = "An error occured.<br />"
+                    For Each x In Request.QueryString
+                        litErrorMessage.Text &= x.ToString & "<br />"
+                    Next
+                End Try
+
             End If
         End If
+
+    End Sub
+
+    Private Sub loadAutoComplete()
+        strSQL = "Select PRODUCT_CODE + ' : Avail - ' + convert(varchar, onhand_qty) from INVENTORY.VW_PRODUCTS order by 1"
+        Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
+        If tblResults.Rows.Count > 0 Then
+            litHeaderCode.Text = "<script>" &
+                        "var productTags = ["
+            Dim delimiter As String = ""
+            For Each row In tblResults.Rows
+                litHeaderCode.Text &= delimiter & """" & row(0).ToString & """"
+                delimiter = ","
+            Next
+            litHeaderCode.Text &= "];</script>"
+        End If
+
+
 
     End Sub
 
@@ -125,7 +153,9 @@
             End If
             lblCitySateZip.Text = tblResults(0)("CITY").ToString & ", " & tblResults(0)("state_name").ToString & " " & tblResults(0)("ZIP").ToString
             showOrderDetailsPanel()
-            createOrder(tblResults(0)("CUSTOMER_ID"))
+            ''createOrder(tblResults(0)("customer_id"))
+
+            createOrder(Request.QueryString("cust"))
         Else
             Response.Redirect("Orders.aspx")
         End If
