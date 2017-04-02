@@ -115,11 +115,11 @@
                           ,@LN = '" & txtLastName.Text.Replace("'", "''") & "'
                           ,@PW = '" & txtPassword.Text.Replace("'", "''").Replace("-", "").Replace("(", "").Replace(")", "").Replace(".", "") & "'
                           ,@LI = '" & txtLoginID.Text.Replace("'", "''") & "'
-                          ,@HR = " & txtHourly.Text.Replace("'", "''").Replace("$", "").Replace(",", "") & "
-                          ,@TX = " & txtTaxWithholding.Text.Replace("'", "''").Replace("$", "").Replace(",", "") & "
+                          ,@HP = " & txtHourly.Text.Replace("'", "''").Replace("$", "").Replace(",", "") & "
+                          ,@TW = " & txtTaxWithholding.Text.Replace("'", "''").Replace("$", "").Replace(",", "") & "
                           ,@VD = " & txtVacationDays.Text.Replace("'", "''") & "
                           ,@PI = '" & ddlPosition.SelectedValue & "'
-                          ,@EID = '" & txtEmployeeID.Text & "'"
+                          ,@UID = '" & txtEmployeeID.Text & "'"
             g_IO_Execute_SQL(strSQL, False)
 
             Response.Redirect("employeeManagement.aspx")
@@ -145,13 +145,23 @@
     End Sub
 
     Private Sub CreateNewemployee()
+
+        '       [dbo].[udp_EmployeeInsert]
+        '-- Add the parameters for the stored procedure here
+        '@FN Varchar(255), @LN varchar(255), @PW varchar(255), @LI varchar(255), @PI INT,
+        '@VD INT, @TW INT, @HP DECIMAL(6,2)
+
+
         ''New employee
-        Dim strSQL As String = "EXECUTE [dbo].[udp_employeeInsert] 
+        Dim strSQL As String = "EXECUTE [dbo].[udp_EmployeeInsert] 
                            @FN = '" & txtFirstName.Text.Replace("'", "''") & "'
                           ,@LN = '" & txtLastName.Text.Replace("'", "''") & "'
         ,@PW = '" & txtPassword.Text.Replace("'", "''") & "'
-        '',@LI = '" & txtLoginID.Text.Replace("'", "''") & "'
-        '',@PI = " & ddlPosition.SelectedValue
+        ,@LI = '" & txtLoginID.Text.Replace("'", "''") & "'
+        ,@PI = " & ddlPosition.SelectedValue &
+        ",@VD = " & txtVacationDays.Text.Replace("'", "''") &
+        ",@TW = " & txtTaxWithholding.Text.Replace("'", "''") &
+        ",@HP = " & txtHourly.Text.Replace("$", "").Replace("'", "''")
         g_IO_Execute_SQL(strSQL, False)
 
         ''get the user id that was just created
@@ -182,7 +192,10 @@
 
     Protected Sub btnDelete_Yes_Click(sender As Object, e As EventArgs) Handles btnDelete_Yes.Click
         hidepanels()
-        Dim strSQL As String = "Update Sales.employee set Enabled = 0 where employee_ID = " & txtEmployeeID.Text
+        Dim strSQL As String = "Update employee.SYS_USERS set IS_ACTIVE = 0 where SYS_USERS_ID = " & txtEmployeeID.Text
+        If g_auditQuery Then
+            g_IO_Execute_SQL(strSQL, False)
+        End If
         g_IO_Execute_SQL(strSQL, False)
 
         Response.Redirect("employeeManagement.aspx")

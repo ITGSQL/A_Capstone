@@ -5,6 +5,7 @@ Module ModIO
     ''**********************************Local Variable Definition**********************************
     ''these variables are defined in web.config
     Public g_intNumberOfRetriesToAccessDatabase As Integer = ConfigurationManager.AppSettings("inNumberOfRetriesToAccessDatabase")
+    Public g_auditQuery As Boolean = ConfigurationManager.AppSettings("auditQueries")
     Public g_ConnectionToUse As String = ConfigurationManager.AppSettings("ConnectionType")
     Public g_ConnectionSchema As String = ConfigurationManager.AppSettings("schema")
     Public g_blnAbort As Boolean = False
@@ -17,62 +18,69 @@ Module ModIO
         ''Function is used to query the database.
         Dim blnInsert As Boolean = False
         If strSQL.ToUpper.IndexOf("INSERT ") = 0 Then
-                Try
-                    ' convert MySQL True/False references to 0/1
-                    Dim strFields As String = strSQL.Substring(0, strSQL.ToUpper.IndexOf(" VALUES"))
-                    Dim strValues As String = strSQL.Substring(strSQL.ToUpper.IndexOf(" VALUES"))
-                    strValues = strValues.Replace(", True", ", 1")
-                    strValues = strValues.Replace(",True", ",1")
-                    strValues = strValues.Replace(", TRUE", ", 1")
-                    strValues = strValues.Replace(",TRUE", ",1")
-                    strValues = strValues.Replace(", False", ", 0")
-                    strValues = strValues.Replace(",False", ",0")
-                    strValues = strValues.Replace(", FALSE", ", 0")
-                    strValues = strValues.Replace(",FALSE", ",0")
-                    strSQL = strFields & strValues
-
-                    strSQL &= ";Select @@IDENTITY as ID;"    ' on MSSQL inserts must retrieve the new RECID now
-                    blnInsert = True
-                Catch : End Try
-            ElseIf strSQL.ToUpper.IndexOf("UPDATE ") = 0 Then
-                Try
-                    ' convert MySQL True/False references to 0/1
-                    Dim strFields As String = strSQL.Substring(0, strSQL.ToUpper.IndexOf(" SET"))
-                    Dim strValues As String = strSQL.Substring(strSQL.ToUpper.IndexOf(" SET"))
-                    strValues = strValues.Replace("= True", "=1")
-                    strValues = strValues.Replace("=True", "=1")
-                    strValues = strValues.Replace("= TRUE", "= 1")
-                    strValues = strValues.Replace("=TRUE", "=1")
-                    strValues = strValues.Replace("= False", "= 0")
-                    strValues = strValues.Replace("=False", "=0")
-                    strValues = strValues.Replace("= FALSE", "= 0")
-                    strValues = strValues.Replace("=FALSE", "=0")
-                    strSQL = strFields & strValues
-                Catch : End Try
-            ElseIf strSQL.ToUpper.IndexOf("SELECT ") = 0 Then
-                If strSQL.ToUpper.IndexOf("CONCAT(") = -1 Then
-                Else
-                    Call convertConcatStatement(strSQL)
-                End If
-            End If
-
             Try
-                Dim tblTemp As DataTable = IO_Execute_MSSQL(strSQL, blnReturnErrorCode)
-                If strSQL.ToUpper.IndexOf("SELECT ") = 0 Then
-                    ' trim all text entries
-                    For Each rowTemp As DataRow In tblTemp.Rows
-                        For i = 0 To tblTemp.Columns.Count - 1
-                            Try : rowTemp(i) = Trim(rowTemp(i)) : Catch : End Try
-                        Next
-                    Next
-                ElseIf blnInsert Then
-                    System.Web.HttpContext.Current.Session("NewMSSQLRECID") = tblTemp.Rows(0)("ID")
+                ' convert MySQL True/False references to 0/1
+                Dim strFields As String = strSQL.Substring(0, strSQL.ToUpper.IndexOf(" VALUES"))
+                Dim strValues As String = strSQL.Substring(strSQL.ToUpper.IndexOf(" VALUES"))
+                strValues = strValues.Replace(", True", ", 1")
+                strValues = strValues.Replace(",True", ",1")
+                strValues = strValues.Replace(", TRUE", ", 1")
+                strValues = strValues.Replace(",TRUE", ",1")
+                strValues = strValues.Replace(", False", ", 0")
+                strValues = strValues.Replace(",False", ",0")
+                strValues = strValues.Replace(", FALSE", ", 0")
+                strValues = strValues.Replace(",FALSE", ",0")
+                strSQL = strFields & strValues
 
-                End If
-                Return tblTemp
-            Catch ex As Exception
-                System.Web.HttpContext.Current.Session("SQLERROR") = ex.Message
-            End Try
+                strSQL &= ";Select @@IDENTITY as ID;"    ' on MSSQL inserts must retrieve the new RECID now
+                blnInsert = True
+            Catch : End Try
+        ElseIf strSQL.ToUpper.IndexOf("UPDATE ") = 0 Then
+            Try
+                ' convert MySQL True/False references to 0/1
+                Dim strFields As String = strSQL.Substring(0, strSQL.ToUpper.IndexOf(" SET"))
+                Dim strValues As String = strSQL.Substring(strSQL.ToUpper.IndexOf(" SET"))
+                strValues = strValues.Replace("= True", "=1")
+                strValues = strValues.Replace("=True", "=1")
+                strValues = strValues.Replace("= TRUE", "= 1")
+                strValues = strValues.Replace("=TRUE", "=1")
+                strValues = strValues.Replace("= False", "= 0")
+                strValues = strValues.Replace("=False", "=0")
+                strValues = strValues.Replace("= FALSE", "= 0")
+                strValues = strValues.Replace("=FALSE", "=0")
+                strSQL = strFields & strValues
+            Catch : End Try
+        ElseIf strSQL.ToUpper.IndexOf("SELECT ") = 0 Then
+            If strSQL.ToUpper.IndexOf("CONCAT(") = -1 Then
+            Else
+                Call convertConcatStatement(strSQL)
+            End If
+        End If
+
+        ''Handle Auditing
+        If g_auditQuery Then
+            Dim tempSQL As String = "Insert into audit_Query (query) values ('" & strSQL.Replace("'", "''") & "')"
+            Dim tblNothing As DataTable = IO_Execute_MSSQL(tempSQL, blnReturnErrorCode)
+        End If
+
+
+        Try
+            Dim tblTemp As DataTable = IO_Execute_MSSQL(strSQL, blnReturnErrorCode)
+            If strSQL.ToUpper.IndexOf("SELECT ") = 0 Then
+                ' trim all text entries
+                For Each rowTemp As DataRow In tblTemp.Rows
+                    For i = 0 To tblTemp.Columns.Count - 1
+                        Try : rowTemp(i) = Trim(rowTemp(i)) : Catch : End Try
+                    Next
+                Next
+            ElseIf blnInsert Then
+                System.Web.HttpContext.Current.Session("NewMSSQLRECID") = tblTemp.Rows(0)("ID")
+
+            End If
+            Return tblTemp
+        Catch ex As Exception
+            System.Web.HttpContext.Current.Session("SQLERROR") = ex.Message
+        End Try
 
     End Function
 
@@ -210,5 +218,6 @@ Module ModIO
         End Try
         Return Nothing
     End Function
+
 
 End Module

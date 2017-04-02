@@ -10,7 +10,9 @@
                 <tr>
                     <th>Last Name</th>
                     <th>First Name</th>
+                    <th>Login ID</th>
                     <th>Position</th>
+                    <th>Rate</th>
                     <th><asp:Button ID="btnAdd" runat="server" Text="Add" /></th>
                 </tr>
             </thead>

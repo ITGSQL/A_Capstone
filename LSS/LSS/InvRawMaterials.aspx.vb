@@ -278,7 +278,7 @@
     End Sub
 
     Private Sub loadRawMaterialListing()
-        Dim strSQL As String = "Select * from [INVENTORY].[vw_Raw_Materials] ORDER BY NAME"
+        Dim strSQL As String = "Select * from [INVENTORY].[vw_Raw_Materials]  WHERE ENABLED = 1 ORDER BY NAME"
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
 
         If tblResults.Rows.Count > 0 Then

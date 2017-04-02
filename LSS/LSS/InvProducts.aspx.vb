@@ -8,6 +8,12 @@
                 Response.Redirect("Login.aspx")
             End If
 
+            If Not IsNothing(Request.QueryString("msg")) Then
+                If Request.QueryString("msg") = 1 Then
+                    litMessage.Text = "Product has been successfully deleted."
+                End If
+            End If
+
             hidePanels()
 
             If Not IsNothing(Request.QueryString("action")) Then
@@ -34,6 +40,8 @@
                     ''pnlAddMultiplePropertyToProduct.Visible = True
                 ElseIf action = "DELETEPROPERTY" Then
                     deleteProperty()
+                ElseIf action = "DELETE" Then
+                    deleteProduct()
                 End If
             Else
                 loadProductListing()
@@ -45,11 +53,17 @@
         End If
     End Sub
 
+    Private Sub deleteProduct()
+        Dim strSql As String = "Update [INVENTORY].[PRODUCT] SET ENABLED = 0 WHERE PRODUCT_ID = " & Request.QueryString("ID")
+        g_IO_Execute_SQL(strSql, False)
+        Response.Redirect("InvProducts.aspx?msg=1")
+    End Sub
+
     Private Sub loadProductListing()
         Dim strSQL As String = "Select *, 
             ((SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='SIZE') + (SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='TRIM')) 'SIZE' 
             ,(SELECT [value] from [INVENTORY].[VW_INVENTORY_PROPERTY] where PRODUCT_ID = p.PRODUCT_ID AND IS_PRODUCT = 1 AND PROPERTY='COLOR') AS 'COLOR'
-            from INVENTORY.VW_PRODUCTS P ORDER BY STOCK_NUMBER, BRAND, DESCRIPTION"
+            from INVENTORY.VW_PRODUCTS P WHERE ENABLED = 1 ORDER BY STOCK_NUMBER, BRAND, DESCRIPTION"
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSQL, False)
 
         If tblResults.Rows.Count > 0 Then

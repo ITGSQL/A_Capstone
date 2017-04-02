@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="ITG Brands - PLOT Portal">
-    <meta name="author" content="Averitt, Brian K (MLMX22)">
-    <title>ITG BRANDS - PLOT PORTAL</title>
+    <meta name="description" content="LSS - Larry's Sartorial Shoppe">
+    <meta name="author" content="Averitt, Brian K">
+    <title>LSS - Larry's Sartorial Shoppe</title>
     <script src="Scripts/jQuery-2.2.4.js"></script>
     <script src="Scripts/jquery-ui-1.8.24.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
