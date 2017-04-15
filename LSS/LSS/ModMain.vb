@@ -99,8 +99,8 @@ Module ModMain
 
                 Mail.Body = Message
 
-                    Dim strHTMLCheck As String = UCase(Message)
-                    Mail.IsBodyHtml = strHTMLCheck.ToUpper.Contains("<BODY") Or strHTMLCheck.ToUpper.Contains("<TABLE") Or strHTMLCheck.ToUpper.Contains("<DIV") Or strHTMLCheck.ToUpper.Contains("<BR") Or strHTMLCheck.ToUpper.Contains("<P") Or strHTMLCheck.ToUpper.Contains("<SPAN")
+                Dim strHTMLCheck As String = UCase(Message)
+                Mail.IsBodyHtml = strHTMLCheck.ToUpper.Contains("<BODY") Or strHTMLCheck.ToUpper.Contains("<TABLE") Or strHTMLCheck.ToUpper.Contains("<DIV") Or strHTMLCheck.ToUpper.Contains("<BR") Or strHTMLCheck.ToUpper.Contains("<P") Or strHTMLCheck.ToUpper.Contains("<SPAN")
                 Dim SMTPServer As New System.Net.Mail.SmtpClient()
 
                 SMTPServer.Timeout = 100000
@@ -113,7 +113,7 @@ Module ModMain
                     SMTPServer.Send(Mail)
                 End If
             End If
-            End If
+        End If
     End Sub
 
     Function GetNextDate(ByVal d As DayOfWeek, Optional ByVal StartDate As Date = Nothing) As Date
@@ -285,4 +285,5 @@ Module ModMain
         Dim strSQL As String = "Update inventory.vw_Products set ONHAND_QTY = (ONHAND_QTY + " & qty & ") where product_id = " & productID
         g_IO_Execute_SQL(strSQL, False)
     End Sub
+
 End Module

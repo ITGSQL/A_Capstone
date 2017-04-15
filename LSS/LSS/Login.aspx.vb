@@ -10,16 +10,16 @@
     End Sub
 
     Protected Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Try
-            If validateUser(txtUserID.Text.Replace("'", "''"), txtPassword.Text.Replace("'", "''")) Then
+        'Try
+        If validateUser(txtUserID.Text.Replace("'", "''"), txtPassword.Text.Replace("'", "''")) Then
                 Response.Redirect("Default.aspx")
             Else
                 litMessage.Text = "Login Failed."
         End If
 
-        Catch ex As Exception
-            litMessage.Text = ex.InnerException.ToString
-        End Try
+        'Catch ex As Exception
+        '    litMessage.Text = ex.InnerException.ToString
+        'End Try
 
     End Sub
 End Class

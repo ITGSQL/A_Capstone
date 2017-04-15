@@ -558,6 +558,7 @@
     <Content Include="InvProducts.aspx" />
     <Content Include="InvRawMaterials.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="OrderHistory.aspx" />
     <Content Include="Orders.aspx" />
     <Content Include="rpt_RawMaterialInventory.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
@@ -682,6 +683,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OrderHistory.aspx.designer.vb">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderHistory.aspx.vb">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Orders.aspx.designer.vb">
       <DependentUpon>Orders.aspx</DependentUpon>

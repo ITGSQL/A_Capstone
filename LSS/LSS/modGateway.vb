@@ -13,7 +13,7 @@ Imports System.Security.Cryptography
 
 Module modGateway
 
-    Public Function validateCreditCardNumber(ByRef CC_Num As String, ByRef CC_Type_ID As Integer)
+    Public Function validateCreditCardNumber(ByRef CC_Num As String, ByRef CC_Type_ID As Integer, ByRef Exp As String, ByRef CVV As Integer)
 
         Dim boolLengthCheck As Boolean = False
         Dim boolLengthCheckFound As Boolean = False
@@ -23,10 +23,29 @@ Module modGateway
         Dim boolReturn As Boolean = False
         Dim boolContinue As Boolean = True
 
+        ''Check if the Expiration is valid
+        ''Get the current date
+        Dim curDate As Date = Date.Now
+        Dim curYear As String = curDate.ToString("yy")
+        Dim curMonth As String = curDate.ToString("MM")
+        If Exp.Split("/")(1) < curYear Then
+            Return False
+        Else
+            If Exp.Split("/")(0) < curMonth Then
+                Return False
+            End If
+        End If
+
+        ''Check if the cvv is valid
+        ''Get the current date
+        If CVV = 666 Then
+            Return False
+        End If
+
         Dim CC_stripped As String = Trim(CC_Num.Replace("-", "").Replace(" ", ""))
 
         ''Get the validation requirements for the credit card type
-        Dim strSql As String = "SELECT prefix_chk, length_chk from mc_cc_types where enabled = 'true' and mc_cc_types_id = " & CC_Type_ID
+        Dim strSql As String = "SELECT prefix_chk, length_chk from dbo.cc_types where mc_cc_types_id = " & CC_Type_ID
         Dim tblResults As DataTable = g_IO_Execute_SQL(strSql, False)
 
         If tblResults.Rows.Count > 0 Then

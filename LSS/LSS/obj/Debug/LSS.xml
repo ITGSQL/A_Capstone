@@ -1709,6 +1709,24 @@ To modify move field declaration from designer file to code-behind file.
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="F:LSS.OrderHistory._litMessage">
+<summary>
+litMessage control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.OrderHistory._rptrOrderHistory">
+<summary>
+rptrOrderHistory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.Orders._litHeaderCode">
 <summary>
 litHeaderCode control.
@@ -1865,6 +1883,42 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:LSS.Orders._litGrandTotal">
 <summary>
 litGrandTotal control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._pnlConfirmVoid">
+<summary>
+pnlConfirmVoid control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litMessage_Void">
+<summary>
+litMessage_Void control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._btnVoid_Confirm">
+<summary>
+btnVoid_Confirm control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._btnVoid_Cancel">
+<summary>
+btnVoid_Cancel control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -2159,6 +2213,69 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:LSS.Orders._ddlCreditCardList">
+<summary>
+ddlCreditCardList control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litCCCardType">
+<summary>
+litCCCardType control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litCCCardNumber">
+<summary>
+litCCCardNumber control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litCCExp">
+<summary>
+litCCExp control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litCCCVV">
+<summary>
+litCCCVV control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litMessage_Credit">
+<summary>
+litMessage_Credit control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._btnPayContinue_Credit">
+<summary>
+btnPayContinue_Credit control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LSS.Orders._btnPayCancel_Credit">
 <summary>
 btnPayCancel_Credit control.
@@ -2180,6 +2297,51 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:LSS.Orders._txtPaymentCheck_CheckNumber">
 <summary>
 txtPaymentCheck_CheckNumber control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._ddlPaymentCheck_DLState">
+<summary>
+ddlPaymentCheck_DLState control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._txtPaymentCheck_DLNumber">
+<summary>
+txtPaymentCheck_DLNumber control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._txtPaymentCheck_Amount">
+<summary>
+txtPaymentCheck_Amount control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._litMessate_Check">
+<summary>
+litMessate_Check control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LSS.Orders._btnPayContine_Check">
+<summary>
+btnPayContine_Check control.
 </summary>
 <remarks>
 Auto-generated field.

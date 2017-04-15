@@ -25,6 +25,11 @@
             /* prevent horizontal scrollbar */
             overflow-x: hidden;
           }
+        h3.error {
+            color: red;
+            font-style: italic;
+            display: block;
+        }
     </style>
     <asp:Literal ID="litHeaderCode" runat="server"></asp:Literal>
     <script>
@@ -52,7 +57,7 @@
             <h4>Enter Product Code</h4>
             <asp:Literal ID="litProductEntryError" runat="server"></asp:Literal>
             <table class="table table-responsive table-bordered">
-                <tr><td>Product: <asp:TextBox ID="txtProductCode_Add" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;QTY: <asp:TextBox ID="txtQty" Text="1" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnAddProduct" runat="server" Text="Add" /></td>
+                <tr><td>Product: <asp:TextBox ID="txtProductCode_Add" runat="server" Width="300px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;QTY: <asp:TextBox ID="txtQty" Text="1" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnAddProduct" runat="server" Text="Add" /></td>
                 </tr>
             </table>
         </div>
@@ -72,7 +77,10 @@
             <asp:Literal ID="litGrandTotal" runat="server"></asp:Literal>
         </div>
     </asp:Panel>
-
+    <asp:Panel ID="pnlConfirmVoid" runat="server">
+        <asp:Literal ID="litMessage_Void" runat="server"></asp:Literal>
+        <asp:Button runat="server" ID="btnVoid_Confirm" Text="Confirm" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button runat="server" ID="btnVoid_Cancel" Text="Cancel" />
+    </asp:Panel>
     <asp:Panel ID="pnlCustomerSearch" runat="server">
         <h3>Customer Search</h3>
         <table class="table table-responsive table-bordered">
@@ -155,20 +163,33 @@
     </asp:Panel>
 
     <asp:Panel ID="pnlPayment_Credit" runat="server">
-        <h3>Cash Payment</h3>
+        <h3>Credit Card Payment</h3>
 
+        *For capstone testing purposes, a list of credit cards have been populated for your convenience.<br />
 
-        <asp:Button ID="btnPayCancel_Credit" runat="server" Text="Cancel Payment" />
+        <table class="table table-bordered table-responsive">
+            <tr><td>Credit Card:</td><td>
+                <asp:DropDownList ID="ddlCreditCardList" runat="server" AutoPostBack="true"></asp:DropDownList></td>
+            </tr>
+            <tr><td>Card Type</td><td><asp:Literal ID="litCCCardType" runat="server"></asp:Literal></td></tr>
+            <tr><td>Card #</td><td><asp:Literal ID="litCCCardNumber" runat="server"></asp:Literal></td></tr>
+            <tr><td>Card Expiration</td><td><asp:Literal ID="litCCExp" runat="server"></asp:Literal></td></tr>
+            <tr><td>Card CVV</td><td><asp:Literal ID="litCCCVV" runat="server"></asp:Literal></td></tr>
+        </table>
+        <asp:Literal ID="litMessage_Credit" runat="server"></asp:Literal>
+        <asp:Button ID="btnPayContinue_Credit" runat="server" Text="ConfirmCharge" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnPayCancel_Credit" runat="server" Text="Cancel Payment" />
     </asp:Panel>
 
     <asp:Panel ID="pnlPayment_Check" runat="server">
         <h3>Check Payment</h3>
             <table class="table table-bordered table-responsive">
                 <tr><td>Check Number</td><td><asp:TextBox ID="txtPaymentCheck_CheckNumber" runat="server"></asp:TextBox></td></tr>
-                <tr><td>DL State</td><td></td></tr>
+                <tr><td>DL State</td><td><asp:DropDownList ID="ddlPaymentCheck_DLState" runat="server"></asp:DropDownList> </td></tr>
+                <tr><td>DL Number</td><td><asp:TextBox ID="txtPaymentCheck_DLNumber" runat="server"></asp:TextBox></td></tr>
+                <tr><td>Amount</td><td><asp:TextBox ID="txtPaymentCheck_Amount" runat="server"></asp:TextBox></td></tr>
             </table>
-
-        <asp:Button ID="btnPayCancel_Check" runat="server" Text="Cancel Payment" />
+        <asp:Literal ID="litMessate_Check" runat="server"></asp:Literal>
+        <asp:Button ID="btnPayContine_Check" runat="server" Text="Accept Check" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnPayCancel_Check" runat="server" Text="Cancel Payment" />
     </asp:Panel>
 
     </asp:Content>
